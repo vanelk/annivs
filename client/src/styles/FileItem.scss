@@ -1,0 +1,21 @@
+.file-item{
+    &:nth-child(1){
+        border-top: 1px solid $secondary-inactive-color;
+    }
+    display: flex;
+    padding: 0.7rem 0.1rem;
+    border-bottom: 1px solid $secondary-inactive-color;
+    align-items: center;
+
+    label{
+        display: flex;
+        align-items: center;
+        .text{
+            margin-left: .4rem;
+            width: 250px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+    }
+    }
+}

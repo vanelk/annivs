@@ -1,0 +1,16 @@
+const router = require("express").Router();
+const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+router.post("/", async (req, res) => {
+    if (!req.cookies.jid) return res.send(JSON.stringify({ error:"No refresh token found" })).status(401);
+    try {
+        let payload = jwt.verify(req.cookies.jid, process.env.refresh_token_secret);
+        let user = await User.findById(payload.id);
+        if (!user) return res.send(JSON.stringify({ error:"User not found" })).status(401);
+        let accessToken = jwt.sign({ id: user.id }, process.env.access_token_secret, { expiresIn: '30m' });
+        res.send(JSON.stringify({ accessToken })) 
+    } catch (e) {
+        res.send(JSON.stringify({ error:"Invalid token" })).status(401);
+    }
+})
+module.exports = router;

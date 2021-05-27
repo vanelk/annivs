@@ -1,0 +1,20 @@
+.error{
+    color: $primary-active-color;
+  .input{
+      border-color: $primary-active-color;
+  }  
+}
+.input{
+    padding: 0.688rem 0.625rem;
+    border: 2px solid $black;
+    width: 100%;
+    font-family: $font-family;
+    font-size: 1.125rem;
+    outline: $black;
+    background: none;
+}
+.label{
+    display: block;
+    text-align: left;
+    padding: 0.375rem 0px;
+}

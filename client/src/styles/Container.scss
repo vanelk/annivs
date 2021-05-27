@@ -1,0 +1,7 @@
+.container{
+    padding: 0.625rem 1.875rem;
+    margin-bottom: 1.875rem;
+    &.fluid {
+        padding: 1.25rem 0.625rem;
+    }
+}

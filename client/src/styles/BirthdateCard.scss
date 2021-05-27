@@ -1,0 +1,14 @@
+.birthday-card{
+    font-size: 1.063rem;
+    background-color: #fff;
+    padding: 0.625rem 1.563rem 0.625rem 0.938rem;
+    height: 3.75rem;
+    .birthday-card__label{
+        color: $secondary-inactive-color;
+        flex-grow: 1;
+        text-align: left;
+        span{
+            margin-right: 0.438rem;
+        }
+    }
+}
