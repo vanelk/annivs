@@ -1,6 +1,6 @@
 import React from 'react'
-import Container from '../components/Container'
-import BackButton from '../components/BackButton';
+import Container from '../components/Container/index'
+import BackButton from '../components/BackButton/index';
 export default function Settings() {
     return (
         <div>

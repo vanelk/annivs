@@ -1,32 +1,23 @@
 const { gql } = require("apollo-server-express");
-
 const typeDefs = gql`
+  scalar Date
   type Query {
-    getIndividual(id: ID!): Individual
-    getIndividuals(name: String): [Individual]
-    getBirthdate(value: String!): Birthdate
-    getBirthdates(startDate: String!, endDate: String!): [Birthdate]
-    listDriveSpreadSheets: [Spreadsheet]
+    getContactById(id: ID!): Contact
+    getContactsByName(name: String!): [Contact]
+    getBirthdatesByDate(date: Date!): [Contact]
+    getBirthdatesByMonth(month: Int!): [Contact]
+    listAvatars: [String]
   }
   type Mutation {
-      createIndividual(name: String!, birthdate: String!): Individual
-      updateIndividual(id: ID!, name: String, birthdate: String): Individual
-      deleteIndividual(id: ID!): Individual
-      setSpreadSheetId(spreadsheetId: String!): String
+      createContact(name: String!, birthdate: Date!, picture:String!): Contact
+      updateContact(id: ID!, name: String, birthdate: Date, picture:String): Contact
+      deleteContact(id: ID!): Contact
   }
-  type Individual {
-      id: ID
+  type Contact {
+      _id: ID
       name: String
-      birthdate: Birthdate
-  }
-  type Birthdate {
-      timestamp: String
-      isoString: String
-      individuals: [Individual]
-  }
-  type Spreadsheet{
-    id: String,
-    name: String
+      birthdate: Date
+      picture: String
   }
 `;
 module.exports = typeDefs;

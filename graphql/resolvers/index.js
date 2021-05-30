@@ -1,15 +1,26 @@
 const birthdateResolvers = require("./birthdate");
-const individualResolvers = require("./individual");
-const userResolvers = require("./user");
+const individualResolvers = require("./contact");
+const avatarResolvers = require("./avatars");
+const { GraphQLScalarType } = require("graphql");
+const dateScalar = new GraphQLScalarType({
+  name: 'Date',
+  parseValue(value) {
+    return new Date(value);
+  },
+  serialize(value) {
+    return value.toISOString();
+  },
+})
 const resolvers = {
+    Date: dateScalar,
     Query: {
         ...individualResolvers.Query,
         ...birthdateResolvers.Query,
-        ...userResolvers.Query
+        ...avatarResolvers.Query
+
     },
     Mutation: {
-        ...individualResolvers.Mutation,
-        ...userResolvers.Mutation
+        ...individualResolvers.Mutation
     }
         
 

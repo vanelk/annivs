@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const User = require("../models/Users");
 const gAuth = require("../lib/api/GoogleAuth");
 router.get("/login", (req, res) => {
     if (req.cookies.jid) {
@@ -22,9 +22,9 @@ router.get("/login/callback", async (req, res) => {
     let resp = await User.findOne({ email: info.email });
     if (!resp) {
         let user = new User({
+            name: info.name,
             email: info.email,
-            token: null,
-            spreadsheetId: null
+            picture: null
         })
         resp = await user.save();
     }
@@ -36,9 +36,9 @@ router.get("/login/callback", async (req, res) => {
     res.redirect(process.env.tmp_app_path);
 });
 
-router.get("/logout", (req, res)=>{
+router.get("/logout", (_, res)=>{
     res.clearCookie("jid");
-    res.sendStatus(200);
+    res.redirect(process.env.tmp_app_path);
 });
 
 module.exports = router;

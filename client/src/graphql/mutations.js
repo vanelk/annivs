@@ -1,28 +1,23 @@
 import gql from 'graphql-tag';
 
 export const ADD_INDIVIDUAL_MUTATION = gql`
-mutation addIndividual($name: String! $date: String!){
-    createIndividual(name: $name, birthdate: $date){
-        id
+mutation addIndividual($name: String! $date: Date! $picture: String!){
+    createContact(name: $name, birthdate: $date, picture: $picture){
+        _id
     }
 }
 `
 export const DELETE_INDIVIDUAL_BY_ID_MUTATION = gql`
 mutation deleteByID($id: ID!){
-    deleteIndividual(id: $id){
-        id
+    deleteContact(id: $id){
+        _id
     }
 }`
 
 export const UPDATE_INDIVIDUAL_BY_ID_MUTATION = gql`
-mutation updateByID($id: ID! $name: String $birthdate: String){
-    updateIndividual(id: $id, name: $name, birthdate: $birthdate){
-        id
+mutation updateByID($id: ID! $name: String $birthdate: Date $picture: String){
+    updateContact(id: $id, name: $name, birthdate: $birthdate, picture: $picture){
+        _id
         name
     }
 }`
-export const UPDATE_SPREADSHEET_ID = gql`
-mutation setSpreadSheetID($spreadsheetId: String!){
-    setSpreadSheetId(spreadsheetId: $spreadsheetId)
-}
-`

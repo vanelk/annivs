@@ -1,55 +1,47 @@
 import gql from 'graphql-tag';
 
 export const FETCH_BIRDAYS_DATE_QUERY = gql`
-    query dateDateBirthDays($date: String!){   
-        getBirthdate(value: $date){
-            isoString
-            individuals{
-                id
-                name
-            }
+    query dateDateBirthDays($date: Date!){   
+        getBirthdatesByDate(date: $date){
+           _id
+           name
+           birthdate
+           picture
         }
     }
 `
 export const FETCH_BIRTHDAYS_MONTH_QUERY = gql`
-    query monthBirthdays($from: String!, $to: String!){
-        getBirthdates(startDate: $from, endDate: $to){
-            isoString
-            individuals{
-                id
-                name
-            }
+    query monthBirthdays($month: Int!){
+        getBirthdatesByMonth(month: $month){
+            _id
+            name
+            birthdate
+            picture
         }
     }
 `
 export const FETCH_INDIVIDUAL_BY_ID_QUERY = gql`
-    query getIndividual($id: ID!){
-        getIndividual(id: $id){
+    query getContactById($id: ID!){
+        getContactById(id: $id){
             name
-            birthdate{
-                isoString
-            }
+            birthdate
+            picture
         }
     }
 `
 
 export const FETCH_INDIVIDUAL_BY_NAME_QUERY = gql`
-    query getIndividuals($name: String!){
-        getIndividuals(name: $name){
-            id
+    query getContactsByName($name: String!){
+        getContactsByName(name: $name){
+            _id
             name
-            birthdate{
-                isoString
-            }
+            birthdate
+            picture
         }
     }
 `
-
-export const FETCH_DRIVE_FILES = gql`
+export const LIST_AVATARS_QUERY = gql`
     query{
-        listDriveSpreadSheets{
-            id
-            name
-        }
+        listAvatars
     }
 `

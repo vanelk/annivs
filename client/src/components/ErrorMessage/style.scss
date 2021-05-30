@@ -1,0 +1,7 @@
+@import '../../styles/vars';
+.error-box{
+    color: $primary-active-color;
+    background: lighten($color: $primary-active-color, $amount: 25%);
+    border-radius: 10px;
+    padding: 0.063rem 0px;
+}

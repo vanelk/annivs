@@ -1,0 +1,14 @@
+@import '../../styles/vars';
+.contact-list__empty{
+    text-align: center;
+    .image{
+        width: 65%;
+    }
+    .title{
+        color: $secondary-active-color;
+    }
+    .text-body{
+        color: $sky-blue;
+    }
+
+}

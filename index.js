@@ -6,12 +6,7 @@ const { ApolloServer } = require("apollo-server-express");
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers/index");
 const cookieParser = require('cookie-parser');
-const cors = require("cors");
 const app = express();
-
-app.use(cors({
-    origin: 'http://localhost:3000/'
-  }))
 app.use(cookieParser());
 app.use(router);
 
@@ -28,11 +23,11 @@ server.applyMiddleware({ app });
 
 mongoose.connect(
     process.env.mongodb_uri,
-    { useNewUrlParser: true, useUnifiedTopology: true }
+    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
 ).then(() => {
     app.listen(
         process.env.PORT,
-        ()=>console.log(`Running a GraphQL API server at http://localhost:${process.env.PORT}${server.graphqlPath}`)
+        () => console.log(`Running a GraphQL API server at http://localhost:${process.env.PORT}${server.graphqlPath}`)
     );
 })
 

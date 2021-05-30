@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../models/User");
+const User = require("../models/Users");
 const jwt = require("jsonwebtoken");
 router.post("/", async (req, res) => {
     if (!req.cookies.jid) return res.send(JSON.stringify({ error:"No refresh token found" })).status(401);

@@ -1,25 +1,5 @@
 @import "./vars";
 @import "./fonts";
-@import './AppBar.scss';
-@import './Avatar.scss';
-@import './BackButton.scss';
-@import './BirthdateCard.scss';
-@import './Button.scss';
-@import './Calendar.scss';
-@import './Container.scss';
-@import './DriveFileSelect.scss';
-@import './ErrorBox.scss';
-@import './FieldSet.scss';
-@import './GoogleButton.scss';
-@import './FileItem.scss';
-@import './Input.scss';
-@import './Loader.scss';
-@import './MainSection.scss';
-@import './Paper.scss';
-@import './PersonItem.scss';
-@import './SearchBar.scss';
-@import './TabBar.scss';
-@import './styles.scss';
 html, body{
     color: $black;
     margin: 0;
@@ -27,7 +7,12 @@ html, body{
     font-family: $font-family;
     box-sizing: border-box;
     background-color: $bg-light;
+    height: 100%;
+    width: 100%;
 }
 *, *:before, *:after {
     box-sizing: inherit;
+}
+#root, .app{
+    height: 100%;
 }

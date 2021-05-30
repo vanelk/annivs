@@ -1,0 +1,96 @@
+@import "../styles/vars";
+.app {
+    .main {
+        overflow-y: auto;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+        position: absolute;
+        height: calc(100% - 310px);
+        width: 100%;
+        background-color: rgba(182, 220, 255, 0.75);
+        padding-bottom: 80px;
+        .contact-list__container {
+            padding: 30px 25px;
+        }
+    }
+}
+.search {
+    &-form {
+        padding: 15px;
+    }
+}
+.profile {
+    .small_text {
+        margin-top: 10px;
+        text-align: center;
+        a {
+            color: $secondary-active-color;
+        }
+    }
+    &__container {
+        text-align: center;
+        .title {
+            margin-bottom: 5px;
+        }
+        .text-body {
+            color: $primary-inactive-color;
+            margin-top: 5px;
+        }
+        .bd-card {
+            margin-top: 30px;
+        }
+        .button-container {
+            margin-top: 50px;
+        }
+    }
+}
+.add {
+    &-form {
+        text-align: center;
+        .errmsg {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .edit-avatar{
+            text-align: center;
+            .edit-button{
+                background: none;
+                font-size: 1.063rem;
+                border: none;
+                font-family: $font-family;    
+                margin-left: -23px;
+            }
+        }
+        .button-container{
+            margin-top: 50px;
+        }
+    }
+}
+.edit{
+    &-form{
+        .errmsg {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .edit-avatar{
+            text-align: center;
+            .edit-button{
+                background: none;
+                font-size: 1.063rem;
+                border: none;
+                font-family: $font-family;    
+                margin-left: -23px;
+            }
+        }
+        .button-container{
+            margin-top: 50px;
+        }
+    }
+}
+.m-auto {
+    margin: auto;
+}
+.no-decoration {
+    text-decoration: none;
+}
