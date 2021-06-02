@@ -6,7 +6,8 @@ import TabBar from '../components/TabBar/index'
 import ContactList from '../components/ContactList/index'
 import { useQuery } from '@apollo/client';
 import { FETCH_BIRDAYS_DATE_QUERY, FETCH_BIRTHDAYS_MONTH_QUERY } from '../graphql/queries';
-import Error from '../components/Error/index'
+import Error from '../components/Error/index';
+import {initializePush} from '../services/pushNotifications';
 import './style.scss';
 function App() {
     const [activeDate, setActiveDate] = useState(new Date());
@@ -46,5 +47,7 @@ function App() {
         </div>
     )
 }
+
+initializePush();
 
 export default App;

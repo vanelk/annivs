@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import propTypes from 'prop-types';
 import Link from '../Link/index';
 import './style.scss';
-export default function TabBar({onChange}) {
+function TabBar({onChange}) {
     const [active, setActive] = useState(1);
     const handleClick = (n) => {
         setActive(n);
@@ -25,3 +26,8 @@ export default function TabBar({onChange}) {
         </div>
     )
 }
+
+TabBar.propTypes = {
+    onChange: propTypes.func
+}
+export default TabBar;

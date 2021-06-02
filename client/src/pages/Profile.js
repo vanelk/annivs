@@ -29,18 +29,18 @@ export default function Profile() {
     })
     if (loading) return (<Loader />);
     if (errors.query) return (<Error error={errors.query} />)
-    const date = new Date(data?.getContactById.birthdate);
+    const date = new Date(data?.getContactById?.birthdate);
     return (
         <div className="profile">
             <Container variant="fluid">
                 <BackButton />
                 <Container>
-                    <Avatar variant="md" className="m-auto" src={data?.getContactById.picture} />
+                    <Avatar variant="md" className="m-auto" src={data?.getContactById?.picture} />
                     <div className="small_text">
                         <Link to={`/app/edit/${id}`} className="link"> Edit </Link>
                     </div>
                     <div className="profile__container">
-                        <h1 className="title"> {data?.getContactById.name} </h1>
+                        <h1 className="title"> {data?.getContactById?.name} </h1>
                         <h3 className="text-body">Today is {new Date(new Date() - date).getFullYear() - 1970} y.o</h3>
                         <BirthdateCard date={date} className="bd-card" />
                         <div className="button-container">

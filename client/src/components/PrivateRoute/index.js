@@ -1,7 +1,8 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import {Route, Redirect} from 'react-router-dom';
 import { useAppState } from '../../context/AppProvider';
-export default function PrivateRoute({children, ...rest}){
+function PrivateRoute({children, ...rest}){
     const {appState} = useAppState();
     return (
         <Route {...rest} render={({ location }) => {
@@ -11,3 +12,11 @@ export default function PrivateRoute({children, ...rest}){
         }} />
       )
 }
+
+PrivateRoute.prototype = {
+  children: propTypes.oneOf([
+    propTypes.arrayOf(propTypes.node),
+    propTypes.node
+  ])
+}
+export default PrivateRoute

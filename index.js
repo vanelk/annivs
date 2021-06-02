@@ -6,10 +6,12 @@ const { ApolloServer } = require("apollo-server-express");
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers/index");
 const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
+const findAndPushNotifications = require("./utils/notificationFunc");
 const app = express();
 app.use(cookieParser());
+app.use(bodyParser.json());
 app.use(router);
-
 
 const server = new ApolloServer({
     typeDefs,
@@ -23,7 +25,7 @@ server.applyMiddleware({ app });
 
 mongoose.connect(
     process.env.mongodb_uri,
-    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
+    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true }
 ).then(() => {
     app.listen(
         process.env.PORT,
@@ -31,3 +33,5 @@ mongoose.connect(
     );
 })
 
+findAndPushNotifications()
+//setInterval(findAndPushNotifications, 24*3600*1000);
