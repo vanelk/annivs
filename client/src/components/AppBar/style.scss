@@ -10,8 +10,10 @@
         flex-grow: 1;
     }
     &__icon-container{
-        .app-bar__link{
+        .app-bar__btn{
             color: $black;
+            background: none;
+            border: none;
             &:nth-child(1){
                 margin-right: 1.25rem;
             }

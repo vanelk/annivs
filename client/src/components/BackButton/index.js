@@ -13,7 +13,7 @@ function BackButton() {
         }
     }
     return (
-        <button onClick={back} className="back-btn">
+        <button aria-label="back" onClick={back} className="back-btn">
             <span className="icon-arrow-circle-left"></span>  
         </button>
     )

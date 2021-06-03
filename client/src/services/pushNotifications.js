@@ -1,5 +1,3 @@
-// from https://web-push-codelab.glitch.me/
-
 var swRegistration;
 var subscription;
 function urlBase64ToUint8Array(base64String) {
@@ -21,15 +19,15 @@ function isPushNotificationSupported() {
 }
 function registerServiceWorker() {
     return navigator.serviceWorker.register(process.env.PUBLIC_URL + "/sw.js", {
-        scope: "/app"
+        scope: "/"
     });
 }
 function getSubscription() {
-    return swRegistration.pushManager.getSubscription()
+    return swRegistration?.pushManager?.getSubscription()
 }
 async function subscribeUser() {
     const appServerPublicKey = "BMb3p8KdGsCvKoeoT395nQbXst4_8sMGOV14SG6asjgjQih7AAWATF6gsYrEoG1oSqQqJYU7izT9brwPhwnT2W8";
-    return swRegistration.pushManager.subscribe({
+    return swRegistration?.pushManager?.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(appServerPublicKey)
     })
@@ -43,27 +41,18 @@ function updateSubscriptionOnServer(subscription) {
         }
     });
 }
-export async function initializePush() {
-    // check if service worker and push supported
+export async function initializeSW() {
     if (isPushNotificationSupported()) {
         try {
             swRegistration = await registerServiceWorker();
-            console.log('Service Worker is registered!');
-        } catch (e) {
-            console.error('Service Worker Error', e);
-        }
-
+        } catch (e) { }
         subscription = await getSubscription();
-        if (subscription === null) {
+        if (subscription === null || subscription === undefined) {
             try {
                 subscription = await subscribeUser();
                 updateSubscriptionOnServer(subscription);
-            } catch (err) {
-                // Notification.permission === 'denied'
-                console.error(err);
-            }
+            } catch (err) { }
         }
-
     } else {
         console.warn('Push messaging is not supported');
     }

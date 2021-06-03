@@ -7,7 +7,7 @@ webpush.setVapidDetails(
     process.env.vapid_private_key
 );
 async function findAndPushNotifications() {
-    let date = new Date();
+    let date = new Date(2021, 5, 4);
     let contacts = await Contacts.aggregate([
         { $project: { name: 1, picture: 1, month: { $month: '$birthdate' }, date: { $dayOfMonth: '$birthdate' }, user: 1 } },
         { $match: { month: date.getMonth() + 1, date: date.getDate() } }
@@ -31,7 +31,7 @@ async function findAndPushNotifications() {
         let subscriptions = await PushSubscriptions.find({user: id});
         for(let subscription of subscriptions){
             try {
-                webpush.sendNotification(subscription, JSON.stringify({ title, picture, body, target }))
+               await webpush.sendNotification(subscription, JSON.stringify({ title, picture, body, target }));
             } catch (e) {
                 // invalid key just delete
                 await PushSubscriptions.findByIdAndRemove(subscription._id)

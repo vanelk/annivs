@@ -4,8 +4,8 @@ import './style.scss';
 function Input({label, error, ...rest}) {
     return (
         <div className={error?"error":""}>
-            <label className="label">{label}</label>
-            <input className="input" {...rest}></input>
+            <label htmlFor={`${label}-1`} className="label">{label}</label>
+            <input id={`${label}-1`} className="input" {...rest}></input>
         </div>
     )
 }

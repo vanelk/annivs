@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Login from './pages/Login';
 import App from './pages/App';
 import Add from './pages/Add';
 import Profile from './pages/Profile';
 import Edit from './pages/Edit';
 import Settings from './pages/Settings';
 import Search from './pages/Search';
+import Login from './pages/Login';
 import Loader from './components/Loader/index';
 import Error from './components/Error/index';
 import PrivateRoute from './components/PrivateRoute/index';
@@ -28,16 +28,16 @@ function Routes() {
       });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   if (loading) return (<Loader />);
-  if (error) return (<Error error={error} action="reload"/>);
+  if (error) return (<Error error={error} action="reload" />);
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Login />
-        </Route>
         <PrivateRoute exact path="/app">
           <App />
         </PrivateRoute>
+        <Route exact path="/app/login">
+          <Login />
+        </Route>
         <PrivateRoute exact path="/app/add">
           <Add />
         </PrivateRoute>
