@@ -13,7 +13,6 @@ const app = express();
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(router);
-console.log(process.env)
 const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -21,7 +20,11 @@ const server = new ApolloServer({
 });
 
 
+app.use(express.static(path.join(__dirname, 'build')));
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 server.applyMiddleware({ app });
 
 mongoose.connect(
@@ -33,10 +36,5 @@ mongoose.connect(
         () => console.log(`Running server at port ${process.env.PORT}`)
     );
 })
-app.use(express.static(path.join(__dirname, 'build')));
 
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 setInterval(findAndPushNotifications, 24*3600*1000);
