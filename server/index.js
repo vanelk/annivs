@@ -7,6 +7,7 @@ const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers/index");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
+const path = require("path");
 const findAndPushNotifications = require("./utils/notificationFunc");
 const app = express();
 app.use(cookieParser());
@@ -29,9 +30,13 @@ mongoose.connect(
 ).then(() => {
     app.listen(
         process.env.PORT,
-        () => console.log(`Running a GraphQL API server at http://localhost:${process.env.PORT}${server.graphqlPath}`)
+        () => console.log(`Running server at port ${process.env.PORT}`)
     );
 })
+app.use(express.static(path.join(__dirname, 'build')));
 
-findAndPushNotifications()
-//setInterval(findAndPushNotifications, 24*3600*1000);
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+setInterval(findAndPushNotifications, 24*3600*1000);

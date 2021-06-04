@@ -1,7 +1,7 @@
 import {createContext, useContext, useReducer} from 'react';
 
 const AppContext = createContext({
-    token: null
+    token: null,
 });
 const appReducer = (state, action) => {
     switch(action.type){

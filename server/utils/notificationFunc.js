@@ -7,7 +7,7 @@ webpush.setVapidDetails(
     process.env.vapid_private_key
 );
 async function findAndPushNotifications() {
-    let date = new Date(2021, 5, 4);
+    let date = new Date();
     let contacts = await Contacts.aggregate([
         { $project: { name: 1, picture: 1, month: { $month: '$birthdate' }, date: { $dayOfMonth: '$birthdate' }, user: 1 } },
         { $match: { month: date.getMonth() + 1, date: date.getDate() } }

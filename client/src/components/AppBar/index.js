@@ -6,7 +6,7 @@ function AppBar({ title }) {
     const history = useHistory();
     const goTo = (link)=>history.push(link);
     return (
-        <div className="app-bar">
+        <nav className="app-bar">
             <h3 className="app-bar__title">{title}</h3>
             <div className="app-bar__icon-container">
                 <button aria-label="settings" className="app-bar__btn" onClick={()=>goTo("/app/settings")}>
@@ -16,7 +16,7 @@ function AppBar({ title }) {
                     <span className="app-bar__icon icon-search" />
                 </button>
             </div>
-        </div>
+        </nav>
     )
 }
 AppBar.propTypes = {

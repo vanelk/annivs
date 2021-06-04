@@ -10,7 +10,6 @@
   "author": "vanelk",
   "license": "ISC",
   "dependencies": {
-    "apollo-link-token-refresh": "^0.3.2",
     "apollo-server-express": "^2.24.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
