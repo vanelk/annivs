@@ -13,7 +13,7 @@ const app = express();
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(router);
-
+console.log(process.env)
 const server = new ApolloServer({
     typeDefs,
     resolvers,
