@@ -6,7 +6,7 @@ const urlsToCache = [
     "/icon-192x192.png",
     "/icon-512x512.png",
     "static/js/2.4185a7f5.chunk.js",
-    "static/js/main.b7f40120.chunk.js",
+    "static/js/main.3fd90ab5.chunk.js",
     "static/js/runtime-main.a06e69b5.chunk.js",
     "/static/media/gilroy-extrabold.3d06cf26.woff",
     "/static/media/fontello.adbf3f47.woff2",

@@ -13,7 +13,7 @@ export default function Home() {
         <div className="login">
             <Container className="text-center">
                 <h1>Happybd</h1>
-                <a className="no-decoration" href="http://localhost:5000/auth/login">
+                <a className="no-decoration" href="/auth/login">
                     <GoogleButton />
                 </a>
             </Container>
