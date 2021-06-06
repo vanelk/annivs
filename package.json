@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build": "cd ./client && npm run build && rimraf ../build && move-cli ./build ../build"
+    "build": "cd ./client && npm run build && rimraf ../build && move-cli ./build ../build",
+    "postinstall": "cd ./client && npm i"
   },
   "author": "vanelk",
   "license": "ISC",
