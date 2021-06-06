@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build": "cd ./client && npm run build && rimraf ../build && move-cli ./build ../build"
   },
   "author": "vanelk",
   "license": "ISC",
@@ -22,6 +23,8 @@
     "web-push": "^3.4.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "move-cli": "^1.2.1",
+    "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2"
   }
 }

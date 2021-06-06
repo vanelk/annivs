@@ -88,6 +88,29 @@
         }
     }
 }
+.login{
+    height: 100%;
+    .login-container{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon-container{
+            margin: auto;
+            height: 80px;
+            width: 80px;
+        }
+        .text-container{
+            margin-bottom: 50px;
+            .text-secondary{
+                color: darken($primary-inactive-color, 30%);
+            }
+        }
+    }
+}
+.text-center{
+    text-align: center;
+}
 .m-auto {
     margin: auto;
 }

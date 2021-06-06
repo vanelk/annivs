@@ -8,7 +8,7 @@ function PrivateRoute({children, ...rest}){
         <Route {...rest} render={({ location }) => {
           return appState.token
             ? children
-            : <Redirect to={{pathname: '/app/login', state:{ from: location}}} />
+            : <Redirect to={{pathname: '/', state:{ from: location}}} />
         }} />
       )
 }

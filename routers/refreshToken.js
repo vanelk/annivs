@@ -7,6 +7,11 @@ router.post("/", async (req, res) => {
         let payload = jwt.verify(req.cookies.jid, process.env.refresh_token_secret);
         let user = await User.findById(payload.id);
         if (!user) return res.send(JSON.stringify({ error:"User not found" })).status(401);
+        if( payload.exp * 1000 <= Date.now()+150*24*3600*1000){
+            res.cookie('jid',
+            refreshToken = jwt.sign({id: user.id}, process.env.refresh_token_secret, {expiresIn: '200d'}),
+            { httpOnly: true })
+        }
         let accessToken = jwt.sign({ id: user.id }, process.env.access_token_secret, { expiresIn: '30m' });
         res.send(JSON.stringify({ accessToken })) 
     } catch (e) {

@@ -1,21 +1,25 @@
-/** v1.0.0 **/
 const CACHE_NAME = 'hbd-static-cache';
+
+const buildURLArray = self.__WB_MANIFEST || [
+    {url:"index.html"},
+    {url:"favicon.ico"},
+    {url:"icon-192x192.png"},
+    {url:"icon-512x512.png"},
+    {url:"static/js/bundle.js"},
+    {url:"static/js/main.chunk.js"},
+    {url:"static/js/vendors~main.chunk.js"},
+    {url:"static/media/gilroy-extrabold.3d06cf26.woff"},
+    {url:"static/media/fontello.adbf3f47.woff2"},
+    {url:"static/media/dog.bbf235eb.png"},
+    {url:"static/media/pageError.74025544.png"},
+    {url:"static/media/search404.c8811a3e.png"}
+];
 const urlsToCache = [
-    "/",
-    "/favicon.ico",
-    "/icon-192x192.png",
-    "/icon-512x512.png",
-    "/static/js/bundle.js",
-    "/static/js/main.chunk.js",
-    "static/js/vendors~main.chunk.js",
-    "/static/media/gilroy-extrabold.3d06cf26.woff",
-    "/static/media/fontello.adbf3f47.woff2",
-    "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
-    "/static/media/dog.bbf235eb.png",
-    "/static/media/pageError.74025544.png",
-    "/static/media/search404.c8811a3e.png"
+    ...buildURLArray.map(({url})=>`/${url}`),
+    "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
 ];
 
+console.log(urlsToCache);
 self.addEventListener("install", function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
@@ -28,8 +32,8 @@ self.addEventListener('activate', function (event) {
 })
 // listen and intercept all requests
 self.addEventListener('fetch', function (event) {
-    if(event.request.url.indexOf("/app") !== -1){
-        event.respondWith(caches.match(new Request("/")).then(res=>{
+    if(event.request.url.indexOf("/app") !== -1 || event.request.url === "/"){
+        event.respondWith(caches.match(new Request("/index.html")).then(res=>{
             return res;
         }))
         return;

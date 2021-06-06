@@ -32,12 +32,12 @@ function Routes() {
   return (
     <Router>
       <Switch>
+        <Route exact path="/">
+          <Login />
+        </Route>
         <PrivateRoute exact path="/app">
           <App />
         </PrivateRoute>
-        <Route exact path="/app/login">
-          <Login />
-        </Route>
         <PrivateRoute exact path="/app/add">
           <Add />
         </PrivateRoute>
