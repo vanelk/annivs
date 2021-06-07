@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const PushSubscriptions = require("../models/PushSubscriptions");
-const findAndPushNotifications = require("./utils/notificationFunc");
+const findAndPushNotifications = require("../utils/notificationFunc");
 const router = require("express").Router();
 router.post("/subscribe", async(req, res)=>{
     const pushSubscription = req.body;
