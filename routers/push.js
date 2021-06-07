@@ -1,5 +1,6 @@
-const PushSubscriptions = require("../models/PushSubscriptions");
 const jwt = require("jsonwebtoken");
+const PushSubscriptions = require("../models/PushSubscriptions");
+const findAndPushNotifications = require("./utils/notificationFunc");
 const router = require("express").Router();
 router.post("/subscribe", async(req, res)=>{
     const pushSubscription = req.body;
@@ -14,5 +15,9 @@ router.post("/subscribe", async(req, res)=>{
     } catch(e){
         res.sendStatus(401);
     }
+})
+router.post("/scheddule", (req, res)=>{
+    findAndPushNotifications();
+    res.sendStatus(200)
 })
 module.exports = router;

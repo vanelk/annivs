@@ -14,7 +14,9 @@
         flex-grow: 1;
         text-align: center;
         color: $primary-inactive-color;
+        cursor: pointer;
         .pill{
+            cursor: pointer;
             border: none;
             border-radius: 20px;
             background: linear-gradient(202.17deg, #FF792D 8.58%, #FF792D 8.59%, #FC5E5E 91.42%);

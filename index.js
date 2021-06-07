@@ -8,7 +8,6 @@ const resolvers = require("./graphql/resolvers/index");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const path = require("path");
-const findAndPushNotifications = require("./utils/notificationFunc");
 const app = express();
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -36,5 +35,3 @@ mongoose.connect(
         () => console.log(`Running server at port ${process.env.PORT}`)
     );
 })
-
-setInterval(findAndPushNotifications, 24*3600*1000);

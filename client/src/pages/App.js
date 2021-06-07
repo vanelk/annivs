@@ -47,6 +47,6 @@ function App() {
         </div>
     )
 }
-initializeSW();
+//initializeSW();
 
 export default App;
