@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation, Redirect } from 'react-router-dom';
 import { useAppState } from '../context/AppProvider';
-import GoogleButton from '../components/GoogleButton/index';
-import Container from '../components/Container/index';
+import GoogleButton from '../components/GoogleButton';
+import Container from '../components/Container';
 import { ReactComponent as LogoSvg } from '../assets/images/icon.svg'
 import './style.scss';
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <div className="login">
             <div className="login-container">
-                <Container className="text-center">
+                <Container>
                     <div className="icon-container">
                         <LogoSvg />
                     </div>

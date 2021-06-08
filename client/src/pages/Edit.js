@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import Avatar from '../components/Avatar/index';
-import BackButton, { back } from '../components/BackButton/index';
-import Container from '../components/Container/index';
-import Input from '../components/Input/index';
-import Button from '../components/Button/index';
-import Fieldset from '../components/Fieldset/index';
-import Loader from '../components/Loader/index';
-import Error from '../components/Error/index';
-import ErrorMessage from '../components/ErrorMessage/index';
-import { dateToYMD } from '../components/Calendar/index';
+import Avatar from '../components/Avatar';
+import BackButton, { back } from '../components/BackButton';
+import Container from '../components/Container';
+import Input from '../components/Input';
+import Button from '../components/Button';
+import Fieldset from '../components/Fieldset';
+import Loader from '../components/Loader';
+import Error from '../components/Error';
+import ErrorMessage from '../components/ErrorMessage';
+import { dateToYMD } from '../components/Calendar';
 import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_INDIVIDUAL_BY_ID_MUTATION } from '../graphql/mutations';
 import { FETCH_INDIVIDUAL_BY_ID_QUERY } from '../graphql/queries';
@@ -49,9 +49,10 @@ export default function Edit() {
         if (values.date !== data?.getContactById?.birthdate) {
             birthdate = values.date?.replace(/-/g, '/')
         }
-        if(values.picture !== data?.getContactById?.picture){
+        if (values.picture !== data?.getContactById?.picture) {
             picture = values.picture
         }
+        console.log(values.name)
         return { id, birthdate, name, picture }
     }
     const handleChange = (ev) => {
@@ -61,14 +62,14 @@ export default function Edit() {
         ev.preventDefault();
         updateIndividual();
     }
-    const toggleAvatarEditor  = (e)=>{
+    const toggleAvatarEditor = (e) => {
         e.preventDefault();
         setShowA(true);
     }
     if (errors.query) return (<Error error={errors.query} />)
     if (loading) return (<Loader />);
-    if(showAvatarEditor){
-        return (<AvatarEditor value={values.picture} onClose={()=>setShowA(false)} onChange={(p)=>setValues({...values, picture:p})}/>)
+    if (showAvatarEditor) {
+        return (<AvatarEditor value={values.picture} onClose={() => setShowA(false)} onChange={(p) => setValues({ ...values, picture: p })} />)
     }
     return (
         <div className="edit">
@@ -78,21 +79,25 @@ export default function Edit() {
                     <Container>
                         {
                             (Object.keys(errors?.update || {}).length > 0) && (
-                                <ErrorMessage className="errmsg">
-                                    <ul >
-                                        {Object.values(errors.update).map((value, i) => <li key={i}>{value}</li>)}
-                                    </ul>
-                                </ErrorMessage>
+                                <div className="errmsg-container">
+                                    <ErrorMessage>
+                                        <ul >
+                                            {Object.values(errors.update).map((value, i) => <li key={i}>{value}</li>)}
+                                        </ul>
+                                    </ErrorMessage>
+                                </div>
                             )
                         }
-                        <Avatar variant="lg" src={values.picture} className="m-auto" />
-                        <Fieldset className="edit-avatar">
+                        <div className="avatar-container">
+                            <Avatar variant="lg" src={values.picture} />
+                        </div>
+                        <Fieldset>
                             <button onClick={toggleAvatarEditor} className="edit-button">
-                                <span className="icon-edit"/> Edit Avatar
+                                <span className="icon-edit" /> Edit Avatar
                             </button>
                         </Fieldset>
                         <Fieldset>
-                            <Input error={errors?.update?.name ? true : false} onChange={handleChange} value={values.name} label="Name" name="name" placeholder="Ex: John Doe" />
+                            <Input autoComplete="off" error={errors?.update?.name ? true : false} onChange={handleChange} value={values.name} label="Name" name="name" placeholder="Ex: John Doe" />
                         </Fieldset>
                         <Fieldset>
                             <Input error={errors?.update?.birthdate ? true : false} onChange={handleChange} value={dateToYMD(new Date(values.date))} type="date" name="date" label="Birthdate" />

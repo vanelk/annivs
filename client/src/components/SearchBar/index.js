@@ -4,7 +4,7 @@ export default function SearchBar(props) {
     return (
         <label className="search-bar">
             <span className="icon-search"/>
-            <input type="search"  {...props}/>
+            <input type="search" autoComplete="off" {...props}/>
         </label>
     )
 }

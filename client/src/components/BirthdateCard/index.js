@@ -1,10 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import Paper from '../Paper/index';
 import './style.scss';
-function BirthdateCard({className, date, ...rest}) {
+function BirthdateCard({date}) {
     return (
-        <Paper className={["birthday-card", className].join(" ")} {...rest}>
+        <div className="birthday-card">
             <div className="birthday-card__label">
                 <span className="icon-calendar"/>
                 Birthdate
@@ -12,11 +11,10 @@ function BirthdateCard({className, date, ...rest}) {
             <div>
             {date.toLocaleString('default', { month: 'long' })} {date.getDate()}, {date.getFullYear()}
             </div>
-        </Paper>
+        </div>
     )
 }
 BirthdateCard.prototype = {
-    className: propTypes.string,
     date: propTypes.instanceOf(Date),
 }
 export default BirthdateCard;

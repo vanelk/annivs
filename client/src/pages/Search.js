@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Container from '../components/Container/index';
-import BackButton from '../components/BackButton/index';
-import SearchBar from '../components/SearchBar/index';
-import SearchList from '../components/SearchList/index';
+import Container from '../components/Container';
+import BackButton from '../components/BackButton';
+import SearchBar from '../components/SearchBar';
+import SearchList from '../components/SearchList';
 import { useHistory, useLocation } from 'react-router';
 import './style.scss';
 export default function Search() {

@@ -1,16 +1,15 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './style.scss';
-function Fieldset({ className, children}) {
+function Fieldset({ children}) {
     return (
-        <fieldset className={["fieldset", className].join(" ")}>
+        <fieldset className="fieldset">
             { children }
         </fieldset>
     )
 }
 
 Fieldset.propTypes = {
-    className: propTypes.string,
     children: propTypes.any
 }
 

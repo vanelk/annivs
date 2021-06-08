@@ -1,24 +1,24 @@
 import React, { useState } from 'react'
-import AppBar from '../components/AppBar/index'
-import Calendar, { getDayOfWeek, monthName } from '../components/Calendar/index'
-import Container from '../components/Container/index'
-import TabBar from '../components/TabBar/index'
-import ContactList from '../components/ContactList/index'
+import AppBar from '../components/AppBar'
+import Calendar, { getDayOfWeek, monthName } from '../components/Calendar'
+import Container from '../components/Container'
+import TabBar from '../components/TabBar'
+import ContactList from '../components/ContactList'
 import { useQuery } from '@apollo/client';
 import { FETCH_BIRDAYS_DATE_QUERY, FETCH_BIRTHDAYS_MONTH_QUERY } from '../graphql/queries';
-import Error from '../components/Error/index';
-import {initializeSW} from '../services/pushNotifications';
+import Error from '../components/Error';
+import { initializeSW } from '../services/pushNotifications';
 import './style.scss';
 function App() {
     const [activeDate, setActiveDate] = useState(new Date());
     const [ activeTab, setActiveTab ] = useState(1);
     var query = FETCH_BIRDAYS_DATE_QUERY;
-    let variables = { date: activeDate };
+    var variables = { date: activeDate };
     if(activeTab === 2){
         query = FETCH_BIRTHDAYS_MONTH_QUERY
         const month = activeDate.getMonth();
         variables = {month}
-    } 
+    }
     const { loading, data, error } = useQuery(query, { variables });
     const handleTabChange = (n) => {
         if(n === 1) setActiveDate(new Date());
@@ -38,7 +38,7 @@ function App() {
                 <AppBar title={title}></AppBar>
                 <Calendar variant={activeTab === 2 ? "full" : "partial"} value={activeDate} onChange={handleDateChange}/>
             </Container>
-            <main className="main">
+            <main className="main" role="main">
                 <div className="contact-list__container">
                     <ContactList data={data?.getBirthdatesByDate || data?.getBirthdatesByMonth || []} loading={loading}/>
                 </div>
@@ -47,6 +47,6 @@ function App() {
         </div>
     )
 }
-//initializeSW();
+initializeSW();
 
 export default App;

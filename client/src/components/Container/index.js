@@ -1,9 +1,11 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './style.scss';
-function Container({variant, className, ...rest}) {
+function Container({ variant, children }) {
     return (
-        <div className={["container", className, variant].join(" ")} {...rest}/>
+        <div className={["container", variant].join(" ")} >
+            {children}
+        </div>
     )
 }
 Container.propTypes = {
@@ -11,6 +13,6 @@ Container.propTypes = {
         'fluid',
         'normal'
     ]),
-    className: propTypes.string
+    children: propTypes.any
 }
-export default  Container;
+export default Container;

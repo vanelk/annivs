@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Avatar from '../components/Avatar/index';
-import BackButton, { back } from '../components/BackButton/index';
-import Container from '../components/Container/index';
-import Input from '../components/Input/index';
-import Button from '../components/Button/index';
-import Fieldset from '../components/Fieldset/index';
-import ErrorMessage from '../components/ErrorMessage/index';
+import Avatar from '../components/Avatar';
+import BackButton, { back } from '../components/BackButton';
+import Container from '../components/Container';
+import Input from '../components/Input';
+import Button from '../components/Button';
+import Fieldset from '../components/Fieldset';
+import ErrorMessage from '../components/ErrorMessage';
 import { useMutation } from '@apollo/client';
 import { ADD_INDIVIDUAL_MUTATION } from '../graphql/mutations';
 import AvatarEditor from '../components/AvatarEditor';
@@ -31,12 +31,12 @@ export default function Add() {
         ev.preventDefault();
         addIndividual();
     }
-    const toggleAvatarEditor  = (e)=>{
+    const toggleAvatarEditor = (e) => {
         e.preventDefault();
         setShowA(true);
     }
-    if(showAvatarEditor){
-        return (<AvatarEditor value={values.picture} onClose={()=>setShowA(false)} onChange={(p)=>setValues({...values, picture:p})}/>)
+    if (showAvatarEditor) {
+        return (<AvatarEditor value={values.picture} onClose={() => setShowA(false)} onChange={(p) => setValues({ ...values, picture: p })} />)
     }
     return (
         <div className="add">
@@ -46,21 +46,25 @@ export default function Add() {
                     <Container>
                         {
                             (Object.keys(errors).length > 0) && (
-                                <ErrorMessage className="errmsg">
-                                    <ul>
-                                        {Object.values(errors).map((value, i) => <li key={i}>{value}</li>)}
-                                    </ul>
-                                </ErrorMessage>
+                                <div className="errmsg-container">
+                                    <ErrorMessage>
+                                        <ul>
+                                            {Object.values(errors).map((value, i) => <li key={i}>{value}</li>)}
+                                        </ul>
+                                    </ErrorMessage>
+                                </div>
                             )
                         }
-                        <Avatar variant="lg" src={values.picture} className="m-auto" />
-                        <Fieldset className="edit-avatar">
+                        <div className="avatar-container">
+                            <Avatar variant="lg" src={values.picture} />
+                        </div>
+                        <Fieldset>
                             <button onClick={toggleAvatarEditor} className="edit-button">
-                                <span className="icon-edit"/> Edit Avatar
+                                <span className="icon-edit" /> Edit Avatar
                             </button>
                         </Fieldset>
                         <Fieldset>
-                            <Input error={errors.name ? true : false} onChange={handleChange} value={values.name} label="Name" name="name" placeholder="Ex: John Doe" />
+                            <Input autoComplete="off" error={errors.name ? true : false} onChange={handleChange} value={values.name} label="Name" name="name" placeholder="Ex: John Doe" />
                         </Fieldset>
                         <Fieldset>
                             <Input error={errors.birthdate ? true : false} onChange={handleChange} value={values.date} type="date" name="date" label="Birthdate" />

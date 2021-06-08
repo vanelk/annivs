@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { useHistory } from 'react-router';
-import Button from '../Button/index';
+import Button from '../Button';
 import errorimg from '../../assets/images/pageError.png';
 import './style.scss';
 function Error({ error, action }) {

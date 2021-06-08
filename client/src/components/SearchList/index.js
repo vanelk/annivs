@@ -2,9 +2,9 @@ import { useQuery } from '@apollo/client';
 import React from 'react'
 import { useLocation } from 'react-router';
 import { FETCH_INDIVIDUAL_BY_NAME_QUERY } from '../../graphql/queries';
-import Loader from '../Loader/index';
-import ContactItem from '../ContactItem/index';
-import Link from '../Link/index';
+import Loader from '../Loader';
+import ContactItem from '../ContactItem';
+import Link from '../Link';
 import notfound from '../../assets/images/search404.png'
 import './style.scss';
 export default function SearchList() {

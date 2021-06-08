@@ -27,12 +27,14 @@ import './style.scss';function AvatarEditor({ onClose, onChange, value }) {
                         <span onClick={onClose} className="icon-close-square" />
                     </button>
                 </div>
-                <Avatar src={picture} className="m-auto" variant="lg" />
+                <div className="avatar-container">
+                    <Avatar src={picture} variant="lg" />
+                </div>
                 <div className="avatars-container">
                     {
                         (data.listAvatars || []).map((a, i) =>
                             (<span className={picture === a ?"active":""} key={i} onClick={selectAvatar(a)}>
-                                <Avatar className="m-auto" variant="sm" src={a} />
+                                <Avatar variant="sm" src={a} />
                             </span>)
                         )
                     }

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import Avatar from '../components/Avatar/index'
-import BackButton, { back } from '../components/BackButton/index';
-import Container from '../components/Container/index';
-import Button from '../components/Button/index';
-import BirthdateCard from '../components/BirthdateCard/index';
-import Loader from '../components/Loader/index';
-import Error from '../components/Error/index'
-import Link from '../components/Link/index';
+import Avatar from '../components/Avatar'
+import BackButton, { back } from '../components/BackButton';
+import Container from '../components/Container';
+import Button from '../components/Button';
+import BirthdateCard from '../components/BirthdateCard';
+import Loader from '../components/Loader';
+import Error from '../components/Error'
+import Link from '../components/Link';
 import { useParams } from 'react-router-dom';
 import { FETCH_INDIVIDUAL_BY_ID_QUERY } from '../graphql/queries';
 import { DELETE_INDIVIDUAL_BY_ID_MUTATION } from '../graphql/mutations';
@@ -35,7 +35,11 @@ export default function Profile() {
             <Container variant="fluid">
                 <BackButton />
                 <Container>
-                    <Avatar variant="md" className="m-auto" src={data?.getContactById?.picture} />
+                    <div className="profile_avatar_wrapper">
+                        <div className="avatar-container">
+                            <Avatar variant="md" src={data?.getContactById?.picture} />
+                        </div>
+                    </div>
                     <div className="small_text">
                         <Link to={`/app/edit/${id}`} className="link"> Edit </Link>
                     </div>

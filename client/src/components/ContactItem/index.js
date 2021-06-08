@@ -1,13 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import Avatar from '../Avatar/index';
-import Paper from '../Paper/index';
+import Avatar from '../Avatar';
 import cake from '../../assets/images/cake.png';
 import './style.scss';
 function ContactItem({ name, date, img }) {
     let today = new Date();
     return (
-        <Paper className="contact-item">
+        <div className="contact-item">
             <Avatar src={img} variant="sm" />
             <div className="contact-item__text-container">
                 <div className="text-title">{name}</div>
@@ -20,8 +19,7 @@ function ContactItem({ name, date, img }) {
                 (<img src={cake} alt="cake" className="contact-item__right-icon"/>):
                 (<div className="bd__text">{diffDatestimeString(today, date)}</div>)
             }
-            
-        </Paper>
+        </div>
     )
 }
 function diffDatestimeString(date1, date2){

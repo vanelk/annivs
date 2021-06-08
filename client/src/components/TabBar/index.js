@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
-import Link from '../Link/index';
+import Link from '../Link';
 import './style.scss';
 function TabBar({onChange}) {
     const [active, setActive] = useState(1);

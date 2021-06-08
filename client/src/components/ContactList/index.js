@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import Link from '../Link/index';
-import Loader from '../Loader/index';
-import ContactItem from '../ContactItem/index';
+import Link from '../Link';
+import Loader from '../Loader';
+import ContactItem from '../ContactItem';
 import dogimg from '../../assets/images/dog.png';
 import './style.scss';
 function ContactList({ data, loading }) {

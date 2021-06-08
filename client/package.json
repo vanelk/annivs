@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "apollo-link-token-refresh": "^0.3.2",
+    "framer-motion": "^4.1.17",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.12.4",
     "jwt-decode": "^3.1.2",

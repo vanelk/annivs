@@ -1,7 +1,7 @@
 @import '../../styles/vars';
 .tab-bar{
     display: flex;
-    position: fixed;
+    position: sticky;
     bottom: 0;
     height: 80px;
     width: 100%;

@@ -1,12 +1,14 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './style.scss';
-function ErrorMessage({className, ...rest}) {
+function ErrorMessage({children}) {
     return (
-        <div className={["error-box", className].join(" ")} {...rest}/>  
+        <div className="error-box" >
+            {children}
+        </div>
     )
 }
-ErrorMessage.propTypes ={
-    className: propTypes.string
+ErrorMessage.propTypes = {
+    children: propTypes.any
 }
 export default ErrorMessage;

@@ -7,9 +7,9 @@ import Edit from './pages/Edit';
 import Settings from './pages/Settings';
 import Search from './pages/Search';
 import Login from './pages/Login';
-import Loader from './components/Loader/index';
-import Error from './components/Error/index';
-import PrivateRoute from './components/PrivateRoute/index';
+import Loader from './components/Loader';
+import Error from './components/Error';
+import PrivateRoute from './components/PrivateRoute';
 import { useAppState } from './context/AppProvider';
 import withApollo from './context/ApolloProvider';
 function Routes() {

@@ -1,21 +1,8 @@
 const PRECACHE = 'hbd-static-cache-v1';
 const RUNTIME = 'hbd-dynamic-cache-v1';
-const buildURLArray = self.__WB_MANIFEST || [
-    { url: "index.html" },
-    { url: "favicon.ico" },
-    { url: "icon-192x192.png" },
-    { url: "icon-512x512.png" },
-    { url: "static/js/bundle.js" },
-    { url: "static/js/main.chunk.js" },
-    { url: "static/js/vendors~main.chunk.js" },
-    { url: "static/media/gilroy-extrabold.3d06cf26.woff" },
-    { url: "static/media/fontello.adbf3f47.woff2" },
-    { url: "static/media/dog.bbf235eb.png" },
-    { url: "static/media/pageError.74025544.png" },
-    { url: "static/media/search404.c8811a3e.png" }
-];
+const buildURLArray = self.__WB_MANIFEST.map(({ url }) => `/${url}`);
 const urlsToCache = [
-    ...buildURLArray.map(({ url }) => `/${url}`),
+    ...buildURLArray,
     "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
 ];
 
