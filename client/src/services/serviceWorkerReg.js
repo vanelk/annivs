@@ -14,17 +14,12 @@ function urlBase64ToUint8Array(base64String) {
     }
     return outputArray;
 }
-function isPushNotificationSupported() {
-    return "serviceWorker" in navigator && "PushManager" in window;
-}
-function registerServiceWorker() {
-    return navigator.serviceWorker.register(process.env.PUBLIC_URL + "/sw.js", {
-        scope: "/"
-    });
-}
-function getSubscription() {
-    return swRegistration?.pushManager?.getSubscription()
-}
+const isServiveWorkerSupported = () => "serviceWorker" in navigator
+
+const isPushNotificationSupported = () =>  isServiveWorkerSupported()  && "PushManager" in window;
+
+const getSubscription = () => swRegistration?.pushManager?.getSubscription()
+
 async function subscribeUser() {
     const appServerPublicKey = "BMb3p8KdGsCvKoeoT395nQbXst4_8sMGOV14SG6asjgjQih7AAWATF6gsYrEoG1oSqQqJYU7izT9brwPhwnT2W8";
     return swRegistration?.pushManager?.subscribe({
@@ -32,6 +27,7 @@ async function subscribeUser() {
         applicationServerKey: urlBase64ToUint8Array(appServerPublicKey)
     })
 }
+
 function updateSubscriptionOnServer(subscription) {
     return fetch("/push/subscribe", {
         method: "POST",
@@ -41,11 +37,8 @@ function updateSubscriptionOnServer(subscription) {
         }
     });
 }
-export async function initializeSW() {
+export async function enablePushNotifications() {
     if (isPushNotificationSupported()) {
-        try {
-            swRegistration = await registerServiceWorker();
-        } catch (e) { }
         subscription = await getSubscription();
         if (subscription === null || subscription === undefined) {
             try {
@@ -55,5 +48,13 @@ export async function initializeSW() {
         }
     } else {
         console.warn('Push messaging is not supported');
+    }
+}
+export async function registerServiceWorker() {
+    if(isServiveWorkerSupported()){
+        swRegistration = await navigator.serviceWorker.register(process.env.PUBLIC_URL + "/sw.js", {
+            scope: "/"
+        });
+        await enablePushNotifications();
     }
 }

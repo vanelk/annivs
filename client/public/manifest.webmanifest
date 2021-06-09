@@ -4,8 +4,8 @@
     "display": "standalone",
     "scope": "/app",
     "start_url": "/app",
-    "name": "Happy BD",
-    "short_name": "HBD",
+    "name": "Annivs",
+    "short_name": "Anniv",
     "description": "An app that manages and reminds of birthdays of your contacts",
     "icons": [
         {

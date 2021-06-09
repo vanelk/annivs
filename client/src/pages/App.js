@@ -7,7 +7,7 @@ import ContactList from '../components/ContactList'
 import { useQuery } from '@apollo/client';
 import { FETCH_BIRDAYS_DATE_QUERY, FETCH_BIRTHDAYS_MONTH_QUERY } from '../graphql/queries';
 import Error from '../components/Error';
-import { initializeSW } from '../services/pushNotifications';
+import { registerServiceWorker } from '../services/serviceWorkerReg';
 import './style.scss';
 function App() {
     const [activeDate, setActiveDate] = useState(new Date());
@@ -47,6 +47,6 @@ function App() {
         </div>
     )
 }
-initializeSW();
+// registerServiceWorker();
 
 export default App;

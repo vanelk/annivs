@@ -52,7 +52,6 @@ export default function Edit() {
         if (values.picture !== data?.getContactById?.picture) {
             picture = values.picture
         }
-        console.log(values.name)
         return { id, birthdate, name, picture }
     }
     const handleChange = (ev) => {
