@@ -47,6 +47,6 @@ function App() {
         </div>
     )
 }
-// registerServiceWorker();
+registerServiceWorker();
 
 export default App;

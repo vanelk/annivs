@@ -7,7 +7,8 @@ import Button from '../Button';
 import Container from '../Container'
 import Error from '../Error';
 import Loader from '../Loader';
-import './style.scss';function AvatarEditor({ onClose, onChange, value }) {
+import './style.scss';import CloseButton from '../CloseButtion';
+function AvatarEditor({ onClose, onChange, value }) {
     const { data, loading, error } = useQuery(LIST_AVATARS_QUERY);
     const [picture, setPicture] = useState(value);
     const handleClick = (e) => {
@@ -23,9 +24,7 @@ import './style.scss';function AvatarEditor({ onClose, onChange, value }) {
         <div className="avatar-editor">
             <Container variant="fluid">
                 <div className="close-btn-container">
-                    <button className="close-button">
-                        <span onClick={onClose} className="icon-close-square" />
-                    </button>
+                    <CloseButton onClick={onClose}/>
                 </div>
                 <div className="avatar-container">
                     <Avatar src={picture} variant="lg" />
