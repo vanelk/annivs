@@ -6,7 +6,7 @@
     "start_url": "/app",
     "name": "Annivs",
     "short_name": "Anniv",
-    "description": "An app that manages and reminds of birthdays of your contacts",
+    "description": "An app that manages and reminds of birthdays of your friends/contacts",
     "icons": [
         {
             "src": "/icon-192x192.png",
