@@ -1,0 +1,26 @@
+@import '../../styles/vars';
+.avatar_editor{
+    .btn_container{
+        margin-top: 2rem;
+    }
+    .avatar_container{
+        display: inline-block;
+    }
+    .avatars_container{
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        row-gap: 5px;
+        .avatar_btn{
+            border-radius: 50%;
+            cursor: pointer;
+            &.active{
+                div{
+                    border: 2px solid $primary-active-color;
+                    background-color: lighten($color: $primary-active-color, $amount: 10%);
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,16 @@
+@import '../../styles/vars';
+.error_container{
+    text-align: center;
+    padding: 25px;
+    .error_image{
+        img{
+            max-width: 100%;
+        }
+    }
+    .error_body{
+        color: $primary-inactive-color;
+    }
+    .btn_container{
+        margin-top: 30px;
+    }
+}

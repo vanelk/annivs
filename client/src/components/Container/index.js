@@ -1,9 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import './style.scss';
+import joinStyles from '../../lib/joinStyles';
+import styles from './style.module.scss';
 function Container({ variant, children }) {
     return (
-        <div className={["container", variant].join(" ")} >
+        <div className={joinStyles(styles.container, styles[variant])} >
             {children}
         </div>
     )

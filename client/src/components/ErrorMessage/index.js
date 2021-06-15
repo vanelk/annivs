@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import './style.scss';
+import styles from './style.module.scss';
 function ErrorMessage({children}) {
     return (
-        <div className="error-box" >
+        <div className={styles.error_box} >
             {children}
         </div>
     )

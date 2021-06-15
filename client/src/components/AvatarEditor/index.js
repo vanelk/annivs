@@ -4,10 +4,10 @@ import propTypes from 'prop-types';
 import { LIST_AVATARS_QUERY } from '../../graphql/queries';
 import Avatar from '../Avatar';
 import Button from '../Button';
-import Container from '../Container'
 import Error from '../Error';
 import Loader from '../Loader';
-import './style.scss';import CloseButton from '../CloseButtion';
+import styles from './style.module.scss';
+import ClosablePane from '../ClosablePane';
 function AvatarEditor({ onClose, onChange, value }) {
     const { data, loading, error } = useQuery(LIST_AVATARS_QUERY);
     const [picture, setPicture] = useState(value);
@@ -21,27 +21,24 @@ function AvatarEditor({ onClose, onChange, value }) {
         setPicture(avatar);
     }
     return (
-        <div className="avatar-editor">
-            <Container variant="fluid">
-                <div className="close-btn-container">
-                    <CloseButton onClick={onClose}/>
+        <div className={styles.avatar_editor}>
+            <ClosablePane onClose={onClose}>
+                <div className={styles.avatar_container}>
+                    <Avatar src={picture} size="lg" />
                 </div>
-                <div className="avatar-container">
-                    <Avatar src={picture} variant="lg" />
-                </div>
-                <div className="avatars-container">
+                <div className={styles.avatars_container}>
                     {
                         (data.listAvatars || []).map((a, i) =>
-                            (<span className={picture === a ?"active":""} key={i} onClick={selectAvatar(a)}>
-                                <Avatar variant="sm" src={a} />
+                            (<span className={`${styles.avatar_btn} ${picture === a ?styles.active:""}`} key={i} onClick={selectAvatar(a)}>
+                                <Avatar size="sm" transparent src={a} />
                             </span>)
                         )
                     }
                 </div>
-                <div className="btn-container">
+                <div className={styles.btn_container}>
                     <Button onClick={handleClick} inactive={value === picture}>Save</Button>
                 </div>
-            </Container>
+            </ClosablePane>
         </div>
     )
 }

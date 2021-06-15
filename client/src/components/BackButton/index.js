@@ -1,6 +1,7 @@
 import React from 'react';
 import {useHistory, useLocation} from  'react-router-dom';
-import './style.scss';
+import {ArrowLeftCircle as ArrowLeftCircleIcon} from '../Icons';
+import styles from './style.module.scss';
 var back;
 function BackButton() {
     const history = useHistory();
@@ -13,8 +14,8 @@ function BackButton() {
         }
     }
     return (
-        <button aria-label="back" onClick={back} className="back-btn">
-            <span className="icon-arrow-circle-left"></span>  
+        <button aria-label="back" onClick={back} className={styles.back_btn}>
+            <ArrowLeftCircleIcon/> 
         </button>
     )
 }

@@ -1,9 +1,10 @@
 import React from 'react';
-import './style.scss';
+import { Search as SearchIcon } from '../Icons';
+import styles from './style.module.scss';
 export default function SearchBar(props) {
     return (
-        <label className="search-bar">
-            <span className="icon-search"/>
+        <label className={styles.search_bar}>
+            <SearchIcon/>
             <input type="search" autoComplete="off" {...props}/>
         </label>
     )

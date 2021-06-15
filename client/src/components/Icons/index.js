@@ -1,0 +1,39 @@
+import React from 'react'
+import styles from './style.module.scss';
+console.log(styles);
+// .icon-home
+// .icon-notification
+// .icon-search
+// .icon-setting
+// .icon-union
+// .icon-arrow-left
+// .icon-arrow-right
+// .icon-arrow-circle-left
+// .icon-arrow-circle-right
+// .icon-calendar
+// .icon-close-square
+// .icon-edit
+// .icon-profile
+// .icon-contacts
+// .icon-privacy
+// .icon-help
+// .icon-document
+// .icon-arrow-right2
+export const Home = ()=> <span class={styles.icon_home}></span>
+export const Notification = ()=> <span className={styles.icon_notification}></span>
+export const Search = ()=> <span className={styles.icon_search}></span>
+export const Setting = ()=> <span className={styles.icon_setting}></span>
+export const Add = ()=> <span className={styles.icon_add}></span>
+export const ArrowLeft = ()=> <span className={styles.icon_arrow_left}></span>
+export const ArrowRight = ()=> <span className={styles.icon_arrow_right}></span>
+export const ArrowLeftCircle = ()=> <span className={styles.icon_arrow_circle_left}></span>
+export const ArrowRightCircle = ()=> <span className={styles.icon_arrow_circle_rigt}></span>
+export const Calendar = ()=> <span className={styles.icon_calendar}></span>
+export const CloseSquare = ()=> <span className={styles.icon_close_square}></span>
+export const Edit = ()=> <span className={styles.icon_edit}></span>
+export const Profile = ()=> <span className={styles.icon_profile}></span>
+export const Contacts  = ()=> <span className={styles.icon_contacts}></span>
+export const Privacy  = ()=> <span className={styles.icon_privacy}></span>
+export const Help  = ()=> <span className={styles.icon_help}></span>
+export const Document  = ()=> <span className={styles.icon_document}></span>
+export const ArrowRightLined  = () => <span className={styles.icon_arrow_right_lined}></span>

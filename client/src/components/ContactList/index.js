@@ -4,7 +4,7 @@ import Link from '../Link';
 import Loader from '../Loader';
 import ContactItem from '../ContactItem';
 import dogimg from '../../assets/images/dog.png';
-import './style.scss';
+import styles from './style.module.scss';
 function ContactList({ data, loading }) {
     if (loading) {
         return (<Loader />)
@@ -21,10 +21,10 @@ function ContactList({ data, loading }) {
 
     } else {
         return (
-            <div className="contact-list__empty">
-                <img className="image" src={dogimg} alt="dog" />
-                <h2 className="title">No birthdays on this day</h2>
-                <h3 className="text-body">
+            <div className={styles.contact_list__empty}>
+                <img className={styles.image} src={dogimg} alt="dog" />
+                <h2 className={styles.title}>No birthdays on this day</h2>
+                <h3 className={styles.text_body}>
                     Use the + button <br />to add a new birthday
                 </h3>
             </div>

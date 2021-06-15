@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import {Route, Redirect} from 'react-router-dom';
-import { useAppState } from '../../context/AppProvider';
+import { useAppState } from '../../providers/AppProvider';
 function PrivateRoute({children, ...rest}){
     const {appState} = useAppState();
     return (

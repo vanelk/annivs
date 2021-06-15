@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/icon-192x192.png" />
+    <link rel="apple-touch-startup-image" href="%PUBLIC_URL%/icon-512x512.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.webmanifest"/>
     <meta name="apple-mobile-web-app-status-bar" content="#ffffff"/>
     <title>Annivs</title>
@@ -14,4 +15,19 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+  <script>
+    if('standalone' in navigator){
+      fetch("/manifest.webmanifest").then(manifest=>{
+        document.querySelector("link[rel=manifest]").href = 
+        `data:application/manifest+json;charset=utf8,${manifest}`;
+      });
+      fetch("/icon-512x512.png").then(r=>r.blob()).then(blob=>{
+        let fr = new FileReader();
+        reader.onload = ()=>{
+          document.querySelector("link[rel=apple-touch-icon]").href = fr.result;
+        }
+        fr.readAsDataURL(blob)
+      })
+    }
+  </script>
 </html>

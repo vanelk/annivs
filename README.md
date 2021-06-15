@@ -1,5 +1,4 @@
 # Annivs
-[![Github All Releases](https://img.shields.io/github/downloads/vanelk/annivs/total.svg)]()
 [![GitHub license](https://img.shields.io/github/license/vanelk/annivs)](https://github.com/vanelk/annivs/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/vanelk/annivs)](https://GitHub.com/vanelk/annivs/releases/)
 [![GitHub issues](https://img.shields.io/github/issues/vanelk/annivs)](https://GitHub.com/vanelk/annivs/issues/)

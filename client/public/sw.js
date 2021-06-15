@@ -1,6 +1,7 @@
 const PRECACHE = 'hbd-static-cache-v1';
 const RUNTIME = 'hbd-dynamic-cache-v1';
 const buildURLArray = self.__WB_MANIFEST.map(({ url }) => `/${url}`);
+
 const urlsToCache = [
     ...buildURLArray,
     "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
@@ -30,9 +31,9 @@ self.addEventListener('activate', function (event) {
 self.addEventListener('fetch', function (event) {
     if (event.request.url.indexOf("/app") !== -1 || event.request.url === "/") {
         event.respondWith(caches.match(new Request("/index.html")).then(res => {
-            return res;
+            return res || fetch(event.request);
         }))
-        return fetch(event.request);
+        return;
     }
     event.respondWith(caches.match(event.request).then(res => {
         return res || fetch(event.request);

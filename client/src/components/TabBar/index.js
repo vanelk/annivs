@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import Link from '../Link';
-import './style.scss';
+import joinStyles from '../../lib/joinStyles';
+import styles from './style.module.scss';
+import {Home as HomeIcon, Add as AddIcon, Calendar as CalendarIcon} from  '../Icons';
 function TabBar({onChange}) {
     const [active, setActive] = useState(1);
     const handleClick = (n) => {
@@ -9,19 +11,19 @@ function TabBar({onChange}) {
         if (typeof onChange === 'function') onChange(n);
     }
     return (
-        <div className="tab-bar">
-            <button aria-label="home" onClick={() => handleClick(1)} className={["tab-btn", active === 1 ? "active" : ""].join(" ")}>
-                <span className="icon-home"></span>
+        <div className={styles.tab_bar}>
+            <button aria-label="home" onClick={() => handleClick(1)} className={joinStyles(styles.tab_btn, active === 1 ? styles.active : null)}>
+                <HomeIcon/>
             </button>
-            <div className="tab-btn">
+            <div className={styles.tab_btn}>
                 <Link to="/app/add">
-                    <button aria-label="add" className="pill">
-                        <span className="icon-union"></span>
+                    <button aria-label="add" className={styles.pill}>
+                        <AddIcon/>
                     </button>
                 </Link>
             </div>
-            <button aria-label="calendar" onClick={() => handleClick(2)} className={["tab-btn", active === 2 ? "active" : ""].join(" ")}>
-                <span className="icon-calendar"></span>
+            <button aria-label="calendar" onClick={() => handleClick(2)} className={joinStyles(styles.tab_btn, active === 2 ? styles.active : null)}>
+                <CalendarIcon/>
             </button>
         </div>
     )

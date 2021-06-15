@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import App from './pages/App';
+import Home from './pages/Home';
 import Add from './pages/Add';
 import Profile from './pages/Profile';
 import Edit from './pages/Edit';
@@ -10,8 +10,8 @@ import Login from './pages/Login';
 import Loader from './components/Loader';
 import Error from './components/Error';
 import PrivateRoute from './components/PrivateRoute';
-import { useAppState } from './context/AppProvider';
-import withApollo from './context/ApolloProvider';
+import { useAppState } from './providers/AppProvider';
+import withApollo from './providers/ApolloProvider';
 function Routes() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -36,7 +36,7 @@ function Routes() {
           <Login />
         </Route>
         <PrivateRoute exact path="/app">
-          <App />
+          <Home />
         </PrivateRoute>
         <PrivateRoute exact path="/app/add">
           <Add />

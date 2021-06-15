@@ -1,0 +1,51 @@
+@import '../../styles/vars';
+.calendar {
+    &_controls{
+        button{
+            border: none;
+            background-color: transparent;
+            font-size: 1.5rem;
+        }
+    }
+    .grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+    }
+    .weekday {
+        font-size: 1rem;
+        color: $primary-inactive-color;
+    }
+    .date {
+        font-size: 1.5rem;
+        cursor: pointer;
+        &__active {
+            color: #fff;
+            z-index: 2;
+            position: relative;
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1;
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
+                background-color: $primary-active-color;
+            }
+        }
+    }
+    .text{
+        &__grey{
+            color: $secondary-inactive-color;
+        }
+    }
+    .weekday,
+    .date {
+        padding: 0.625rem 0px;
+    }
+}

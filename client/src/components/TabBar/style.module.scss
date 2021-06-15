@@ -1,0 +1,33 @@
+@import '../../styles/vars';
+.tab_bar{
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    background-color: #fff;
+    .tab_btn{
+        font-size: 24px;
+        border: none;
+        background: none;
+        flex-grow: 1;
+        text-align: center;
+        color: $primary-inactive-color;
+        cursor: pointer;
+        .pill{
+            cursor: pointer;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(202.17deg, #FF792D 8.58%, #FF792D 8.59%, #FC5E5E 91.42%);
+            color: #fff;
+            height: 41px;
+            width: 85px;
+            flex-grow: 1;
+            font-size: 0.813rem;
+        }
+        &.active{
+            color: $black;
+        }
+    }
+}

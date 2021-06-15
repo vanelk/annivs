@@ -1,11 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import './style.scss';
+import { CloseSquare as CloseSquareIcon } from '../Icons';
+import styles from './style.module.scss';
 
 function CloseButton({onClick}) {
     return (
-        <button className="close-button">
-            <span onClick={onClick} className="icon-close-square" />
+        <button onClick={onClick} className={styles.close_button}>
+            <CloseSquareIcon/>
         </button>
     )
 }

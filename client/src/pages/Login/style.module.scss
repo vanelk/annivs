@@ -1,0 +1,25 @@
+@import '../../styles/vars';
+.login {
+    height: 100%;
+    .login_container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon_container {
+            margin: auto;
+            height: 100px;
+            width: 100px;
+        }
+        .text_container {
+            text-align: center;
+            margin-bottom: 50px;
+            .text_title{
+                color: $primary-active-color;
+            }
+            .text_body {
+                color: darken($primary-inactive-color, 30%);
+            }
+        }
+    }
+}

@@ -1,8 +1,8 @@
 import React from 'react';
-import './style.scss';
+import styles from './style.module.scss';
 function Loader() {
     return (
-        <div className="loader" >
+        <div className={styles.loader} >
             <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                 <circle className="length" fill="none" strokeWidth="8" strokeLinecap="round" cx="33" cy="33" r="28"></circle>
             </svg>

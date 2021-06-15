@@ -2,22 +2,22 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Avatar from '../Avatar';
 import cake from '../../assets/images/cake.png';
-import './style.scss';
+import styles from './style.module.scss';
 function ContactItem({ name, date, img }) {
     let today = new Date();
     return (
-        <div className="contact-item">
-            <Avatar src={img} variant="sm" />
-            <div className="contact-item__text-container">
-                <div className="text-title">{name}</div>
-                <div className="text">
+        <div className={styles.contact_item}>
+            <Avatar src={img} size="sm" />
+            <div className={styles.contact_item__text_container}>
+                <div className={styles.text_title}>{name}</div>
+                <div className={styles.text_body}>
                     {date.toLocaleString('default', { month: 'long' })} {date.getDate()}, {date.getFullYear()}
                 </div>
             </div>
             {
                 (today.getMonth() === date.getMonth() && today.getDate() === date.getDate())?
-                (<img src={cake} alt="cake" className="contact-item__right-icon"/>):
-                (<div className="bd__text">{diffDatestimeString(today, date)}</div>)
+                (<img src={cake} alt="cake" className={styles.contact_item__right_icon}/>):
+                (<div className={styles.bd__text}>{diffDatestimeString(today, date)}</div>)
             }
         </div>
     )

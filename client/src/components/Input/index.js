@@ -1,11 +1,11 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import './style.scss';
+import styles from './style.module.scss';
 function Input({label, error, ...rest}) {
     return (
-        <div className={error?"error":""}>
-            <label htmlFor={`${label}-1`} className="label">{label}</label>
-            <input id={`${label}-1`} className="input" {...rest}></input>
+        <div className={error?styles.error:null}>
+            <label htmlFor={`${label.toLocaleLowerCase()}__`} className={styles.label}>{label}</label>
+            <input id={`${label.toLocaleLowerCase()}__`} className={styles.input} {...rest}></input>
         </div>
     )
 }

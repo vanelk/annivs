@@ -6,7 +6,7 @@ import Loader from '../Loader';
 import ContactItem from '../ContactItem';
 import Link from '../Link';
 import notfound from '../../assets/images/search404.png'
-import './style.scss';
+import styles from './style.module.scss';
 export default function SearchList() {
     const query = new URLSearchParams(useLocation().search).get("q");
     const { data, loading } = useQuery(FETCH_INDIVIDUAL_BY_NAME_QUERY, {
@@ -16,25 +16,25 @@ export default function SearchList() {
     if (loading) return (<Loader />)
     if (query && data?.getContactsByName.length < 1) {
         return (
-            <div className="search-results__empty">
-                <img className="image" alt="not-found" src={notfound} />
+            <div className={styles.search_results__empty}>
+                <img className={styles.image} alt="not-found" src={notfound} />
                 <h2>Sorry we could find any results for <strong>"{query}"</strong></h2>
-                <p className="text-body">
+                <p className={styles.text_body}>
                     Please check spelling or try a different name
-            </p>
+                </p>
             </div>
         )
     } else if (query && data.getContactsByName.length >= 1) {
         toDisplay = data.getContactsByName.map((contact, i) => {
             let date = new Date(contact.birthdate)
             return (
-                <Link key={i} className="no-decoration" to={`/app/p/${contact._id}`}>
+                <Link key={i} to={`/app/p/${contact._id}`}>
                     <ContactItem name={contact.name} date={date} img={contact.picture} />
                 </Link>)
         })
     }
     return (
-        <div className="search-results">
+        <div className={styles.search_results}>
             {toDisplay}
         </div>
     )

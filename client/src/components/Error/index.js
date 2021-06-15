@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import Button from '../Button';
 import errorimg from '../../assets/images/pageError.png';
-import './style.scss';
+import styles from './style.module.scss';
 function Error({ error, action }) {
     const history = useHistory() || window.history;
     let func = null, btnText = '';
@@ -18,13 +18,13 @@ function Error({ error, action }) {
             btnText = 'Reload';
     }
     return (
-        <div className="error-container">
-            <div className="error-image">
+        <div className={styles.error_container}>
+            <div className={styles.error_image}>
                 <img alt="error" src={errorimg} />
             </div>
-            <h1 className="error-title">Uh oh!</h1>
-            <p className="error-body">{error.split(".").map((sentence, i)=><span key={i}>{sentence}.</span>)}</p>
-            <div className="btn-container">
+            <h1 className={styles.error_title}>Uh oh!</h1>
+            <p className={styles.error_body}>{error.split(".").map((sentence, i) => <span key={i}>{sentence}.</span>)}</p>
+            <div className={styles.btn_container}>
                 <Button onClick={func}>{btnText}</Button>
             </div>
         </div>

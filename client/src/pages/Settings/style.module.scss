@@ -1,0 +1,19 @@
+@import '../../styles/vars';
+.settings {
+    .settings_container{
+        padding: 1rem 1.2rem;
+    }
+    section {
+        margin-bottom: 1.8rem;
+        .section_heading{
+            color: $primary-inactive-color;
+        }
+        .section_item{
+            margin: .8rem 0;
+        }
+    }
+}
+.btn_container{
+    margin-top: 50px;
+    text-align: center;
+}
