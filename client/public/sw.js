@@ -1,7 +1,6 @@
 const PRECACHE = 'hbd-static-cache-v1';
 const RUNTIME = 'hbd-dynamic-cache-v1';
-const buildURLArray = self.__WB_MANIFEST.map(({ url }) => `/${url}`);
-
+var buildURLArray =  self.__WB_MANIFEST.map(({ url }) => `/${url}`);
 const urlsToCache = [
     ...buildURLArray,
     "https://fonts.googleapis.com/css2?family=Roboto&display=swap"

@@ -1,15 +1,25 @@
-.app {
-    .main {
-        overflow-y: auto;
-        border-top-left-radius: 40px;
-        border-top-right-radius: 40px;
-        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-        position: relative;
-        min-height: calc(100vh - 316px);
-        width: 100%;
-        background-color: rgba(182, 220, 255, 0.75);
-        .contact_list_container {
-            padding: 30px 25px;
+@import '../../styles/vars';
+.login {
+    height: 100%;
+    .login_container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon_container {
+            margin: auto;
+            height: 100px;
+            width: 100px;
+        }
+        .text_container {
+            text-align: center;
+            margin-bottom: 50px;
+            .text_title{
+                color: $primary-active-color;
+            }
+            .text_body {
+                color: darken($primary-inactive-color, 30%);
+            }
         }
     }
 }

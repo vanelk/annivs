@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Home from './pages/Home';
+import App from './pages/App';
 import Add from './pages/Add';
 import Profile from './pages/Profile';
 import Edit from './pages/Edit';
 import Settings from './pages/Settings';
 import Search from './pages/Search';
-import Login from './pages/Login';
+import Home from './pages/Home';
 import Loader from './components/Loader';
 import Error from './components/Error';
 import PrivateRoute from './components/PrivateRoute';
@@ -33,10 +33,10 @@ function Routes() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Login />
+          <Home />
         </Route>
         <PrivateRoute exact path="/app">
-          <Home />
+          <App />
         </PrivateRoute>
         <PrivateRoute exact path="/app/add">
           <Add />

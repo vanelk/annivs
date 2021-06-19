@@ -1,0 +1,40 @@
+@import '../../styles/vars';
+.toggle {
+    display: block;
+    width: 49px;
+    height: 30px;
+    background: #ffffff;
+    border: 0.851875px solid #d1def7;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    cursor: pointer;
+
+    .box {
+        width: 19.5px;
+        height: 19.5px;
+        background: #b5c1d8;
+        display: block;
+        border-radius: 50%;
+        transition: 0.3s all;
+        margin-left: 0;
+        background-position: left;
+    }
+
+    input {
+        position: absolute;
+        display: none;
+        &:checked + .box {
+            margin-left: 50%;
+            background: $secondary-active-color;
+            background-position: right;
+        }
+    }
+
+    &:active {
+        .box {
+            width: 24px;
+        }
+    }
+}

@@ -9,6 +9,7 @@
             color: $primary-inactive-color;
         }
         .section_item{
+            font-size: 1.15rem;
             margin: .8rem 0;
         }
     }
@@ -16,4 +17,39 @@
 .btn_container{
     margin-top: 50px;
     text-align: center;
+}
+div + #account_section{
+    margin-top: 20px;
+}
+#notification_section{
+    .flex{
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        .flex_1{
+            text-align: left;
+            flex-grow: 1;
+        }
+    }
+}
+#account_section{
+    .flex{
+        display: flex;
+        align-items: center; 
+        .flex_1{
+            flex-grow: 1;
+            margin-left: 16px;
+        }
+    }
+    .name{
+        font-size: 20px;
+    }
+    .email{
+        color: #727272;
+    }
+    .more_btn{
+        border: none;
+        background: transparent;
+        font-size: 28px;
+    }
 }

@@ -1,8 +1,12 @@
 @import '../../styles/vars';
 .error_box{
     text-align: left;
-    color: $primary-active-color;
+    color: #8d4f4b;
     background: lighten($color: $primary-active-color, $amount: 25%);
     border-radius: 10px;
     padding: 0.063rem 0px;
+    ul{
+        padding-inline-end: 14px;
+        padding-inline-start: 14px;
+    }
 }

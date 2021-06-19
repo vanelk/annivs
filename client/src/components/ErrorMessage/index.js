@@ -4,7 +4,9 @@ import styles from './style.module.scss';
 function ErrorMessage({children}) {
     return (
         <div className={styles.error_box} >
-            {children}
+            <ul>
+                {children}
+            </ul>
         </div>
     )
 }

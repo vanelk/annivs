@@ -16,6 +16,7 @@ export default function Profile() {
     const { id } = useParams();
     const [errors, setErrors] = useState({ delete: null, query: null })
     const { data, loading } = useQuery(FETCH_INDIVIDUAL_BY_ID_QUERY, {
+        fetchPolicy: 'cache-and-network',
         onError(e) {
             setErrors({ query: e.message })
         },
@@ -36,7 +37,7 @@ export default function Profile() {
                 <BackButton />
                 <Container>
                     <div className={styles.profile_avatar_wrapper}>
-                        <div className="avatar-container">
+                        <div className={styles.avatar_container}>
                             <Avatar size="md" src={data?.getContactById?.picture} />
                         </div>
                     </div>

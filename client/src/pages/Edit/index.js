@@ -22,6 +22,7 @@ export default function Edit() {
     const [values, setValues] = useState({ name: '', date: '', picture: '/avatars/0' });
     const [showAvatarEditor, setShowA] = useState(false);
     const { data, loading } = useQuery(FETCH_INDIVIDUAL_BY_ID_QUERY, {
+        fetchPolicy: 'cache-and-network',
         onCompleted(data) {
             setValues({
                 name: data?.getContactById?.name,
@@ -80,7 +81,7 @@ export default function Edit() {
                     <Container>
                         {
                             (Object.keys(errors?.update || {}).length > 0) && (
-                                <div className="errmsg-container">
+                                <div className={styles.errmsg_container}>
                                     <ErrorMessage>
                                         <ul >
                                             {Object.values(errors.update).map((value, i) => <li key={i}>{value}</li>)}

@@ -29,7 +29,7 @@ function AvatarEditor({ onClose, onChange, value }) {
                 <div className={styles.avatars_container}>
                     {
                         (data.listAvatars || []).map((a, i) =>
-                            (<span className={`${styles.avatar_btn} ${picture === a ?styles.active:""}`} key={i} onClick={selectAvatar(a)}>
+                            (<span role="button" className={`${styles.avatar_btn} ${picture === a ?styles.active:""}`} key={i} onClick={selectAvatar(a)}>
                                 <Avatar size="sm" transparent src={a} />
                             </span>)
                         )

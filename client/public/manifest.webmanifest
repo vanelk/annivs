@@ -4,9 +4,9 @@
     "display": "standalone",
     "scope": "/app",
     "start_url": "/app",
-    "name": "Annivs",
-    "short_name": "Anniv",
-    "description": "An app that manages and reminds of birthdays of your friends/contacts",
+    "name": "Anniversaries",
+    "short_name": "Annivs",
+    "description": "An app that manages and reminds of birthdays of your friends",
     "icons": [
         {
             "src": "/icon-192x192.png",
@@ -15,7 +15,7 @@
         },
         {
             "src": "/icon-512x512.png",
-            "sizes": "512x512",
+            "sizes": "512x512", 
             "type": "image/png",
             "purpose": "maskable"
         }

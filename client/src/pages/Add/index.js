@@ -71,7 +71,7 @@ export default function Add() {
                         <Fieldset>
                             <Input error={errors.birthdate ? true : false} onChange={handleChange} value={values.date} type="date" name="date" label="Birthdate" />
                         </Fieldset>
-                        <div className={styles.button_container}>
+                        <div className={styles.btn_container}>
                             <Button loading={loading}>ADD</Button>
                         </div>
                     </Container>
