@@ -9,7 +9,7 @@ function ContactList({ data, loading, locale }) {
     if (loading)  return <Loader /> ;
     return data.map(({ _id, name, birthdate, picture }) => {
         let today = new Date();
-        const date = new Date(birthdate.replace(/-/g, '\/').replace(/T.+/, ''));
+        const date = new Date(birthdate.replace(/-/g, '/').replace(/T.+/, ''));
         return (
             <Link key={_id} to={`/app/p/${_id}`}>
                 <div className={styles.contact_item}>

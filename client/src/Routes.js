@@ -15,6 +15,7 @@ import { withApollo } from './lib/graphql';
 import { I18nProvider } from './lib/i18n';
 import Home from './pages/Home';
 import Page404 from './pages/Page404';
+import { register } from './services/service-worker'
 function Routes() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -68,7 +69,7 @@ function Routes() {
     </Router>)
 }
 
-
+register();
 
 
 export default withApollo(Routes);

@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { useHistory } from 'react-router';
-import { Setting as SettingsIcon, Search as SearchIcon } from '../Icons';
+import { Setting as SettingsIcon } from '../Icons';
 import styles from './app-bar.module.scss';
 export default function AppBar({ title }) {
     const history = useHistory();
