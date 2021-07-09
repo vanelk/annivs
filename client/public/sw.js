@@ -46,6 +46,7 @@ self.addEventListener('push', function (event) {
         body,
         icon: picture,
         tag: 'hbd-notification',
+        badge: '/badge.png',
         actions: [
             {
                 action: "/app/p/" + target,

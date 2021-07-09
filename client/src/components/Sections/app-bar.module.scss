@@ -1,0 +1,24 @@
+@import '../../styles/vars';
+.app_bar{
+    display: flex;
+    margin-bottom: 0.75rem;
+    height: 5rem;
+    align-items: center;
+    &__title{
+        font-size: 2rem;
+        font-weight: bolder;
+        flex-grow: 1;
+        text-transform: capitalize;
+    }
+    &__icon_container{
+        .app_bar__btn{
+            color: $font-color;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .app_bar__icon{
+            font-size: 1.575rem;
+        }
+    }
+}

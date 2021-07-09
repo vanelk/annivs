@@ -1,14 +1,27 @@
 @import '../../styles/vars';
 .profile {
+    .app_bar{
+        display: flex;
+        align-items: center;
+        .main_btn{
+            flex-grow: 1;
+            text-align: left;
+        }
+        .menu_container{
+            margin-right: 26px;
+            .menu_action{
+                background: none;
+                font-size: 30px;
+                border: none;
+            }
+            .menu_wrapper{
+                right: 24px;
+                position: absolute;
+            }
+        }
+    }
     &_avatar_wrapper {
         text-align: center;
-    }
-    .small_text {
-        margin-top: 10px;
-        text-align: center;
-        a {
-            color: $secondary-active-color;
-        }
     }
     &_container {
         text-align: center;
@@ -29,8 +42,4 @@
         height: auto;
         display: inline-block;
     }
-}
-.btn_container {
-    text-align: center;
-    margin-top: 50px;
 }

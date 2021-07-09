@@ -2,29 +2,31 @@ import React, { useEffect, useState } from 'react';
 import Container from '../../components/Container'
 import BackButton from '../../components/BackButton';
 import Button from '../../components/Button';
-import SettingsCard from '../../components/SettingsCard';
 import ErrorMessage from '../../components/ErrorMessage';
 import Avatar from '../../components/Avatar';
 import {
-    Document as DocumentIcon,
-    Privacy as PrivacyIcon,
-    Help as HelpIcon,
-    Ellipsis as EllipsisIcon
+    ExternalLink as ExternalLinkIcon,
+    FluentArrowRight as FluentArrowRightIcon
 } from '../../components/Icons';
-import styles from './style.module.scss';
-import { disablePush, enablePush, getSubscription, isPushNotificationSupported } from '../../serviceWorker';
+import Select from '../../components/Select';
 import Toggle from '../../components/Toggle';
+import styles from './style.module.scss';
+import { disablePush, enablePush, getSubscription, isPushNotificationSupported } from '../../services/service-worker';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { locales } from '../../lib/i18n';
+import { useAppState } from '../../context/app-context';
 export default function Settings() {
     const [logoutLoading, setLogoutLoading] = useState(false);
     const [error, setError] = useState(null)
     const [isPushOn, setIsPushOn] = useState(false);
     const [isEmailOn, setIsEmailOn] = useState(false);
+    const [theme, setTheme] = useState('auto');
+    const { locale } = useIntl();
+    const { setLocale } = useAppState();
+    const [showPushNotifOption, setShowPushNotifOption] = useState(true);
     useEffect(() => {
-        if (!isPushNotificationSupported()) {
-            return setError('Push messaging not supported by browser');
-        }
-        if (Notification.permission === 'denied') {
-            return setError('Push notifications disabled on browser');
+        if (!isPushNotificationSupported() || Notification.permission === 'denied') {
+            return setShowPushNotifOption(false);
         }
         getSubscription().then(subcription => {
             if (!subcription) {
@@ -34,22 +36,25 @@ export default function Settings() {
             }
         })
     }, [])
-    const changePush = async () => {
+    const togglePush = async () => {
         if (isPushOn) {
-            const [result, error] = await disablePush()
+            const [result, error] = await disablePush();
             if (error) setError(error);
             setIsPushOn(!result)
         } else {
-            const [result, error] = await enablePush()
+            const [result, error] = await enablePush();
             if (error) setError(error);
             setIsPushOn(result);
         }
     }
-    const changeEmail = async () => {
+    const toggleEmail = async () => {
         setIsEmailOn(!isEmailOn);
     }
     const openLink = (link) => () => {
         window.open(link, "_blank");
+    }
+    const handleChangeLocale = (value) => {
+        setLocale(value);
     }
     const logout = () => {
         setLogoutLoading(true);
@@ -67,11 +72,11 @@ export default function Settings() {
                     )}
                     <section id={styles.account_section}>
                         <div className={styles.section_heading}>
-                            Account
+                            <FormattedMessage id="settings-acc-section" />
                         </div>
                         <div className={styles.section_item} >
                             <div className={styles.flex}>
-                                <Avatar src="https://picsum.photos/seed/picsum/150" size="sm" />
+                                <Avatar src="https://picsum.photos/56" size="sm" />
                                 <div className={styles.flex_1}>
                                     <div className={styles.name}>
                                         Vanel Stevy
@@ -81,62 +86,112 @@ export default function Settings() {
                                     </div>
                                 </div>
                                 <button className={styles.more_btn}>
-                                    <EllipsisIcon />
+                                    <FluentArrowRightIcon />
                                 </button>
 
                             </div>
                         </div>
                     </section>
+                    <section id={styles.general_section}>
+                        <div className={styles.section_heading}>
+                            <FormattedMessage id="settings-gen-section" />
+                        </div>
+                        <div className={styles.section_item} >
+                            <div className={styles.flex}>
+                                <div className={styles.flex_1}>
+                                    <FormattedMessage id="settings-theme-text" />
+                                </div>
+                                <Select defaultValue={theme} onChange={setTheme} values={[
+                                    { text: 'Device Theme', value: 'auto' },
+                                    { text: 'Dark Theme', value: 'dark' },
+                                    { text: 'Light Theme', value: 'light' }
+                                ]} />
+                            </div>
+                        </div>
+                        <div className={styles.section_item} >
+                            <div className={styles.flex}>
+                                <div className={styles.flex_1}>
+                                    <FormattedMessage id="settings-lang-text" />
+                                </div>
+                                <Select onChange={handleChangeLocale} defaultValue={locale} values={
+                                    Object.keys(locales).map(locale=>({text: locales[locale].text, value:locale}))
+                                } />
+                            </div>
+                        </div>
+                    </section>
                     <section id={styles.contacts_section}>
                         <div className={styles.section_heading}>
-                            Contacts
+                            <FormattedMessage id="settings-cont-section" />
                         </div>
                         <div className={styles.section_item} >
-                            Import Contacts
+                            <div className={styles.flex}>
+                                <div className={styles.flex_1}>
+                                    <FormattedMessage id="settings-imp-cont-text" />
+                                </div>
+                                <FluentArrowRightIcon />
+                            </div>
                         </div>
                         <div className={styles.section_item} >
-                            Export Contacts
+                            <div className={styles.flex}>
+                                <div className={styles.flex_1}> 
+                                    <FormattedMessage id="settings-exp-cont-text" />
+                                </div>
+                                <FluentArrowRightIcon />
+                            </div>
                         </div>
                     </section>
                     <section id={styles.notification_section}>
                         <div className={styles.section_heading}>
-                            Notifications
+
+                            <FormattedMessage id="settings-notif-section" />
                         </div>
-                        <div className={styles.section_item} >
-                            <div className={styles.flex}>
-                                <div className={styles.flex_1}>
-                                    Push Notifications
+                        {
+                            showPushNotifOption && (
+                                <div className={styles.section_item} >
+                                    <div className={styles.flex}>
+                                        <div className={styles.flex_1}>
+                                            <FormattedMessage id="settings-push-notif-text" />
+                                        </div>
+                                        <Toggle value={isPushOn} onChange={togglePush} />
+                                    </div>
                                 </div>
-                                <Toggle value={isPushOn} onChange={changePush} />
-                            </div>
-                        </div>
+                            )
+                        }
                         <div className={styles.section_item}>
 
                             <div className={styles.flex}>
                                 <div className={styles.flex_1}>
-                                    Email Notifications
+                                    <FormattedMessage id="settings-email-notif-text" />
                                 </div>
-                                <Toggle value={isEmailOn} onChange={changeEmail} />
+                                <Toggle value={isEmailOn} onChange={toggleEmail} />
                             </div>
                         </div>
                     </section>
                     <section id="help-info-section">
                         <div className={styles.section_heading}>
-                            Help &amp; Information
+                            <FormattedMessage id="settings-help-section" />
                         </div>
-                        <div className={styles.section_item} onClick={openLink("/documents/privacy")}>
-                            <SettingsCard icon={<PrivacyIcon />} title="Privacy Policy" />
+
+                        <div onClick={openLink("/help")} className={styles.section_item}>
+                            <div className={styles.flex}>
+                                <div className={styles.flex_1}>
+                                    <FormattedMessage id="settings-support-text" />
+                                </div>
+                                <ExternalLinkIcon />
+                            </div>
                         </div>
-                        <div className={styles.section_item} onClick={openLink("/documents/terms")}>
-                            <SettingsCard icon={<DocumentIcon />} title="Terms of Service" />
-                        </div>
-                        <div className={styles.section_item} onClick={openLink("/support")}>
-                            <SettingsCard icon={<HelpIcon />} title="Support" />
+                        <div onClick={openLink("https://github.com/vanelk/annivs/issues")} className={styles.section_item}>
+                            <div className={styles.flex}>
+                                <div className={styles.flex_1}>
+                                    <FormattedMessage id="settings-report-text" />
+                                </div>
+                                <ExternalLinkIcon />
+                            </div>
                         </div>
                     </section>
                     <div className={styles.btn_container}>
                         <Button loading={logoutLoading} onClick={logout}>
-                            Log Out
+                            <FormattedMessage id="settings-signout" />
                         </Button>
                     </div>
                 </div>

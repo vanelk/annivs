@@ -7,6 +7,9 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true
-    }
+    },
+    picture: String,
+    pushNotifications: Boolean,
+    emailNotifications: Boolean
 });
 module.exports = model('User', userSchema);

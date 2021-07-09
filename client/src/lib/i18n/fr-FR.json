@@ -1,0 +1,19 @@
+{
+    "appbar-title": "aujourd'hui",
+    "app-empty-bd-list-heading": "Aucun anniversaire aujourd'hui",
+    "app-empty-bd-list-body": "Utilisez le bouton + pour ajouter un nouvel anniversaire",
+    "settings-acc-section": "Compte",
+    "settings-gen-section": "Réglages généraux",
+    "settings-cont-section": "Contacts",
+    "settings-notif-section": "Notifications",
+    "settings-help-section": "Aide et Informations",
+    "settings-theme-text": "Thème",
+    "settings-lang-text": "Langue",
+    "settings-imp-cont-text": "Importer des Contacts",
+    "settings-exp-cont-text": "Exporter des Contacts",
+    "settings-push-notif-text": "Notifications Push",
+    "settings-email-notif-text": "Notifications Email",
+    "settings-support-text": "Support",
+    "settings-report-text": "Signaler un bug",
+    "settings-signout": "Se Déconnecter"
+}

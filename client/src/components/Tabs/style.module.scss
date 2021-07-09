@@ -1,0 +1,21 @@
+@import "../../styles/vars";
+.tabs {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    z-index: 1;
+    align-items: center;
+    background-color: #fff;
+    .tab_wrapper {
+        border: none;
+        background: none;
+        flex-grow: 1;
+        cursor: pointer;
+        color: $secondary-inactive-color;
+        &.active{
+            color: $font-color;
+        }
+    }
+}

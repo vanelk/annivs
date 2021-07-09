@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import App from './pages/App';
+import ProtectedRoute from './hoc/ProtectedRoute';
 import Add from './pages/Add';
 import Profile from './pages/Profile';
 import Edit from './pages/Edit';
 import Settings from './pages/Settings';
 import Search from './pages/Search';
-import Home from './pages/Home';
+import Login from './pages/Login';
 import Loader from './components/Loader';
+import Events from './pages/Events';
 import Error from './components/Error';
-import PrivateRoute from './components/PrivateRoute';
-import { useAppState } from './providers/AppProvider';
-import withApollo from './providers/ApolloProvider';
+import { useAppState } from './context/app-context';
+import { withApollo } from './lib/graphql';
+import { I18nProvider } from './lib/i18n';
+import Home from './pages/Home';
+import Page404 from './pages/Page404';
 function Routes() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const { setAuthToken } = useAppState();
+  const { setAuthToken, appState: { locale } } = useAppState();
   useEffect(() => {
     setLoading(true);
     fetch("/refresh_token", { method: 'POST' }).then(res => res.json())
@@ -31,33 +34,41 @@ function Routes() {
   if (error) return (<Error error={error} action="reload" />);
   return (
     <Router>
-      <Switch>
+      <I18nProvider locale={locale}>
+        <Switch>
         <Route exact path="/">
-          <Home />
+          <Login />
         </Route>
-        <PrivateRoute exact path="/app">
-          <App />
-        </PrivateRoute>
-        <PrivateRoute exact path="/app/add">
+        <Route exact path="/app">
+          <Home/>
+        </Route>
+        <ProtectedRoute exact path="/app/events">
+          <Events />
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/app/add">
           <Add />
-        </PrivateRoute>
-        <PrivateRoute exact path="/app/settings">
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/app/settings">
           <Settings />
-        </PrivateRoute>
-        <PrivateRoute exact path="/app/p/:id">
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/app/p/:id">
           <Profile />
-        </PrivateRoute>
-        <PrivateRoute exact path="/app/edit/:id">
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/app/edit/:id">
           <Edit />
-        </PrivateRoute>
-        <PrivateRoute path="/app/search">
+        </ProtectedRoute>
+        <ProtectedRoute path="/app/search">
           <Search />
-        </PrivateRoute>
+        </ProtectedRoute>
         <Route path="*">
-          <Error error="Page not found" action="home" />
+          <Page404 />
         </Route>
-      </Switch>
+        </Switch>
+      </I18nProvider>
     </Router>)
 }
+
+
+
 
 export default withApollo(Routes);

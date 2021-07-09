@@ -1,5 +1,22 @@
+@import '../../styles/vars';
 .search {
     &_form {
         padding: 15px;
     }
+}
+.search_results{
+    margin-top: 50px;
+    &__empty{
+        text-align: center;
+        margin-top: 10px;
+        .image{
+            max-width: 100%;
+        }
+        .text_body{
+            color: $primary-inactive-color;
+        }
+    }
+}
+.search_results__empty{
+    margin-top: 2px;
 }

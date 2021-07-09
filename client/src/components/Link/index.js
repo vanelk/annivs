@@ -10,7 +10,7 @@ function Link({to, children}) {
     }} className={styles.link} >{children}</RouterLink> )
 }
 Link.propTypes = {
-    children: propTypes.any,
+    children: propTypes.node,
     to: propTypes.string.isRequired
 }
 

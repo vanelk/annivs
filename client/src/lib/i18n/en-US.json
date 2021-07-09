@@ -1,0 +1,19 @@
+{
+    "appbar-title": "today",
+    "app-empty-bd-list-heading": "No birthdays on this day",
+    "app-empty-bd-list-body": " Use the + button to add a new birthday",
+    "settings-acc-section": "Account",
+    "settings-gen-section": "General",
+    "settings-cont-section": "Contacts",
+    "settings-notif-section": "Notifications",
+    "settings-help-section": "Help & Information",
+    "settings-theme-text": "Theme",
+    "settings-lang-text": "Language",
+    "settings-imp-cont-text": "Import Contacts",
+    "settings-exp-cont-text": "Export Contacts",
+    "settings-push-notif-text": "Push Notifications",
+    "settings-email-notif-text": "Email Notifications",
+    "settings-support-text": "Support",
+    "settings-report-text": "Report a Bug",
+    "settings-signout": "Sign Out"
+}

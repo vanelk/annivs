@@ -1,0 +1,11 @@
+@import '../../styles/vars';
+.tab{
+    text-align: center;
+    .tab_icon{
+        font-size: 24px;
+    }
+    .tab_text{
+        text-transform: capitalize;
+        font-size: 13px;
+    }
+}

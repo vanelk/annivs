@@ -3,15 +3,15 @@ import propTypes from 'prop-types';
 import styles from './style.module.scss';
 function Input({label, error, ...rest}) {
     return (
-        <div className={error?styles.error:null}>
+        <div className={error?styles.error:null} data-error={error}>
             <label htmlFor={`${label.toLocaleLowerCase()}__`} className={styles.label}>{label}</label>
-            <input id={`${label.toLocaleLowerCase()}__`} className={styles.input} {...rest}></input>
+            <input  id={`${label.toLocaleLowerCase()}__`} className={styles.input} {...rest}  />
         </div>
     )
 }
 
 Input.propTypes = {
     label: propTypes.string.isRequired,
-    error: propTypes.bool
+    error: propTypes.string
 }
 export default Input;

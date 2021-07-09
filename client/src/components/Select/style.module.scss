@@ -1,0 +1,99 @@
+@import "../../styles/vars";
+$text-color: rgba(0, 0, 0, 0.74);
+$border-color: rgb(212, 212, 212);
+
+.dropdown_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 10rem;
+    position: relative;
+    .dropdown_title {
+        flex-grow: 1;
+        text-align: left;
+        margin-left: 0.38rem;
+        color: $text-color;
+        text-transform: capitalize;
+    }
+}
+
+.dropdown_button {
+    font-family: $font-family;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 10px;
+    border: 0.1rem solid $border-color;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    & span {
+        pointer-events: none;
+    }
+    &:hover,
+    &:focus {
+        color: $secondary-active-color;
+        border: 0.1rem solid $secondary-active-color;
+        box-shadow: 0 0 0 0.2rem rgba(44, 98, 246, 0.4);
+    }
+    .dropdown_arrow {
+        transition: transform 0.1s ease-in-out;
+        svg {
+            display: block;
+            fill: $text-color;
+            width: 14px;
+        }
+    }
+    &:focus {
+        .dropdown_arrow{
+            transform: rotate(180deg);
+        }
+    }
+    &:focus + .dropdown_list_container {
+        visibility: visible
+    }
+}
+.dropdown_list_container {
+    visibility: hidden;
+    overflow: hidden;
+    position: absolute;
+    top: 27px;
+    width: 100%;
+    transition: visibility 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    .dropdown_list_wrapper {
+        margin-top: 1rem;
+        padding: .7rem .4rem;
+        z-index: 1;
+        background-color: #fff;
+        border-radius: 10px;
+        border: 0.1rem solid $border-color;
+        position: relative;
+        ul.dropdown_list {
+            position: relative;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            li.dropdown_list_item {
+                padding: .4rem .7rem;
+                transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                border-radius: 8px;
+                display: block;
+                color: $text-color;
+                transition: color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                overflow: hidden;
+                max-width: 100%;
+                text-overflow: ellipsis;
+                cursor: pointer;
+                &:hover {
+                    background-color: #e9efff;
+                    color: $secondary-active-color;
+                }
+                & + .dropdown_list_item{
+                    margin-top: .4rem;
+                }
+            }
+        }
+    }
+}
+

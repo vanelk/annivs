@@ -10,7 +10,7 @@ function Fieldset({ children}) {
 }
 
 Fieldset.propTypes = {
-    children: propTypes.any
+    children: propTypes.node
 }
 
 export default Fieldset;

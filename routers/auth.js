@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/Users");
-const gAuth = require("../lib/api/GoogleAuth");
+const gAuth = require("../apis/GoogleAuth");
 router.get("/login", (req, res) => {
     if (req.cookies.jid) {
         try {

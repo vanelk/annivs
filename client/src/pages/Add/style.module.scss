@@ -1,6 +1,9 @@
 @import '../../styles/vars';
 .add {
     &_form {
+        &_container{
+            padding: 1rem 1.2rem;
+        }
         .avatar_container {
             text-align: center;
             width: auto;
@@ -23,7 +26,7 @@
         }
         .btn_container{       
             text-align: center;
-            margin-top: 50px;
+            margin-top: 30px;
         }
     }
 }

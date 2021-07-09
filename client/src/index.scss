@@ -1,18 +1,21 @@
 @import "./styles/vars";
 @import "./styles/fonts";
 html, body{
-    color: $black;
+    color: $font-color;
     margin: 0;
     padding: 0;
     font-family: $font-family;
     box-sizing: border-box;
-    background-color: $bg-light;
+    background-color: $body-color;
     height: 100%;
     width: 100%;
 }
 *, *:before, *:after {
     user-select: none;
     box-sizing: inherit;
+}
+* {
+    -webkit-tap-highlight-color: transparent;
 }
 #root, .app{
     height: 100%;

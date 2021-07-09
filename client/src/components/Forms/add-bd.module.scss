@@ -1,0 +1,29 @@
+@import '../../styles/vars';
+.person {
+    &_form {
+        .avatar_container {
+            text-align: center;
+            width: auto;
+            height: auto;
+            display: inline-block;
+        }
+        text-align: center;
+        .errmsg_container {
+            margin-bottom: 25px;
+        }
+        .edit_button {
+            background: none;
+            font-size: 1.063rem;
+            border: none;
+            font-family: $font-family;
+            margin-left: -23px;
+        }
+        fieldset {
+            text-align: center;
+        }
+        .btn_container{       
+            text-align: center;
+            margin-top: 50px;
+        }
+    }
+}

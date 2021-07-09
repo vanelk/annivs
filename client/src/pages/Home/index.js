@@ -1,34 +1,49 @@
-import React from 'react';
-import { useLocation, Redirect } from 'react-router-dom';
-import { useAppState } from '../../providers/AppProvider';
-import GoogleButton from '../../components/GoogleButton';
+import React, { useState } from 'react'
+import { FETCH_BIRDAYS_DATE_QUERY } from '../../lib/graphql/queries';
+import { daysForLocale } from '../../components/Calendar';
+import { FormattedDate, FormattedMessage, useIntl } from 'react-intl';
 import Container from '../../components/Container';
-import { ReactComponent as LogoSvg } from '../../assets/images/icon.svg'
-import styles from './style.module.scss';
+import Error from '../../components/Error';
+import { isEqual } from '../../utils/dateUtil';
+import { joinStrings } from '../../utils/stringUtil';
+import { useQuery } from '@apollo/client';
+import styles from '../../components/Calendar/style.module.scss';
+import AppBar from '../../components/Sections/AppBar';
+import MainContainer from '../../components/Sections/MainContainer';
+import TabBar from '../../components/Sections/TabBar';
 export default function Home() {
-    const { appState } = useAppState();
-    const { state } = useLocation();
-    if (appState.token) {
-        return <Redirect to={state?.from || '/app'} />
+    const [activeDate, setActiveDate] = useState(new Date());
+    const intl = useIntl();
+    const { loading, data, error } = useQuery(FETCH_BIRDAYS_DATE_QUERY, { variables: { date: activeDate }, fetchPolicy: 'cache-and-network' });
+    const startDate = new Date(activeDate)
+    const dates = [];
+    const weekdays = daysForLocale(intl.locale);
+    startDate.setDate(startDate.getDate() - startDate.getDay());
+    var title =  <FormattedDate weekday="long" value={activeDate} /> 
+    for (let i = 0; i < 7; i++) {
+        let d = new Date(startDate);
+        d.setDate(d.getDate() + i)
+        dates.push(d);
     }
+    if (error) return <Error error={error.message} />
+    if (isEqual(activeDate, new Date())) title = <FormattedMessage id={"appbar-title"} />
     return (
-        <div className={styles.login}>
-            <div className={styles.login_container}>
-                <Container>
-                    <div className={styles.icon_container}>
-                        <LogoSvg />
-                    </div>
-                    <div className={styles.text_container}>
-                        <h1 className={styles.text_title}>Happybd</h1>
-                        <div className={styles.text_body}>
-                            Never forget a birthday again
-                    </div>
-                    </div>
-                    <a href="/auth/login">
-                        <GoogleButton />
-                    </a>
-                </Container>
-            </div>
+        <div>
+            <Container>
+                <AppBar title={title} />
+                <div className={styles.grid}>
+                    {weekdays.map((day, i) => <div key={i} className={styles.weekday}>{day}</div>)}
+                    {dates.map((day, i) =>
+                    (<div key={i} onClick={() => setActiveDate(day)} className={styles.date}>
+                        <div className={joinStrings(styles.date__text, isEqual(day, activeDate) ? styles.date__active : null)}>
+                            {day.getDate()}
+                        </div>
+                    </div>)
+                    )}
+                </div>
+            </Container>
+            <MainContainer locale={intl.locale} data={data?.getBirthdatesByDate} loading={loading} />
+            <TabBar/>
         </div>
     )
 }

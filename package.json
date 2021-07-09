@@ -21,6 +21,7 @@
     "graphql": "^15.5.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.7",
+    "react-intl": "^5.20.2",
     "web-push": "^3.4.4"
   },
   "devDependencies": {

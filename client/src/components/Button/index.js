@@ -1,6 +1,6 @@
 import React,{Fragment} from 'react';
 import propTypes from 'prop-types';
-import joinStyles from '../../lib/joinStyles';
+import {joinStrings} from '../../utils/stringUtil';
 import styles from './style.module.scss';
 function Button({loading, onClick, inactive, ...rest}) {
     const handleClick = (e)=>{
@@ -10,7 +10,7 @@ function Button({loading, onClick, inactive, ...rest}) {
         onClick(e);
     }
     return (
-        <button className={joinStyles(styles.btn, loading? styles.loading: null, inactive? styles.inactive: null)} onClick={handleClick} {...rest}>
+        <button className={joinStrings(styles.btn, loading? styles.loading: null, inactive? styles.inactive: null)} onClick={handleClick} {...rest}>
             <div className={styles.btn_text}>
                 {loading ?
                 (<Fragment>

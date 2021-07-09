@@ -1,6 +1,4 @@
 .avatar{
-    width: 3.75rem;
-    height: 3.75rem;
     border-radius: 50%;
     text-align: center;
     position: relative;
@@ -8,6 +6,10 @@
     background-color: #FFEE53;
     &.transparent{
         background-color: transparent;
+    }
+    &.sm{
+        width: 3.5rem;
+        height: 3.5rem;
     }
     &.lg{
         width: 9.375rem;
@@ -20,5 +22,6 @@
     &__img{
         max-width: 100%;
         max-height: 100%;
+        user-select: none;
     }
 }

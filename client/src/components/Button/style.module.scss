@@ -3,10 +3,10 @@
   background-color: $primary-active-color;
   height: 2.813rem;
   padding: 0.625rem 1rem;
-  max-width: 310px;
+  max-width: 320px;
   width: 100%;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   &.inactive{
     background-color: lighten($color: $primary-active-color, $amount: 10%);

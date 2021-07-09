@@ -3,18 +3,21 @@
     display: block;
     width: 49px;
     height: 30px;
-    background: #ffffff;
+    background: #b5c1d8;
     border: 0.851875px solid #d1def7;
     border-radius: 15px;
     display: flex;
     align-items: center;
     padding: 0 5px;
     cursor: pointer;
+    &[data-checked="true"]{
+        background-color:  $secondary-active-color;
+    }
 
     .box {
         width: 19.5px;
         height: 19.5px;
-        background: #b5c1d8;
+        background: #fff;
         display: block;
         border-radius: 50%;
         transition: 0.3s all;
@@ -27,7 +30,7 @@
         display: none;
         &:checked + .box {
             margin-left: 50%;
-            background: $secondary-active-color;
+            background: #fff;
             background-position: right;
         }
     }

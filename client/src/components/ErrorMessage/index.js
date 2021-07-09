@@ -11,6 +11,6 @@ function ErrorMessage({children}) {
     )
 }
 ErrorMessage.propTypes = {
-    children: propTypes.any
+    children: propTypes.node
 }
 export default ErrorMessage;

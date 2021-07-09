@@ -6,13 +6,17 @@
     section {
         margin-bottom: 1.8rem;
         .section_heading{
-            color: $primary-inactive-color;
+            font-size: 0.95rem;
+            color: $secondary-inactive-color;
         }
         .section_item{
             font-size: 1.15rem;
             margin: .8rem 0;
         }
     }
+}
+.section_item + .section_item {
+    margin-top: 15px!important;
 }
 .btn_container{
     margin-top: 50px;
@@ -21,35 +25,30 @@
 div + #account_section{
     margin-top: 20px;
 }
-#notification_section{
-    .flex{
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        .flex_1{
-            text-align: left;
-            flex-grow: 1;
-        }
+.flex{
+    display: flex;
+    align-items: center;
+    .flex_1{
+        text-align: left;
+        flex-grow: 1;
     }
 }
 #account_section{
     .flex{
-        display: flex;
-        align-items: center; 
         .flex_1{
-            flex-grow: 1;
             margin-left: 16px;
         }
     }
     .name{
-        font-size: 20px;
+        font-size: 1.2rem;
     }
     .email{
-        color: #727272;
+        font-size: 1rem;
+        color: $primary-inactive-color;
     }
     .more_btn{
         border: none;
         background: transparent;
-        font-size: 28px;
+        font-size: 1.15rem;
     }
 }
